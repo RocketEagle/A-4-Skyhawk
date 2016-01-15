@@ -6,6 +6,10 @@ The A-4 series are light weight, single engine jet attack aircraft. There are nu
 ###Mission
 The A4 aircraft is designed primarily for the delivery of coventional and nuclear weapons during hours of daylight and under visual flight conditions. However, these aircraft also have the capability of delivering conventional ordinance, under the control of the TPQ-10 radar, using either manual or automatic release modes at night and during foul weather conditions.
 ###Specifications:
-X
+* Bullet 2
+  * Bullet 2a
+  * Bullet 2b
 ###Weapons
-X
+* Bullet 2
+  * Bullet 2a
+  * Bullet 2b
