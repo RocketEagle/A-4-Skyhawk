@@ -1,5 +1,5 @@
 # A-4-Skyhawk
-A-4 Skyhawk for DCS
+A-4E Skyhawk for DCS, made by Hoggit Dev
 
 ##The A-4
 The A-4 series are light weight, single engine jet attack aircraft. There are numerous models of the A4 aircraft in service use. The A4E/F and the TA4F are currently employed by the Marine Corps. A vastly imrpvoed model, the A4M, is also entering Marine Corps service. All models of the A4 have two internally mounted 20mm cannons. The A4E/F and A4M are single seat while the TA4F is a two seated aircraft
