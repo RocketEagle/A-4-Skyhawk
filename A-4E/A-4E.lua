@@ -219,7 +219,7 @@ A_4E =  {
 		elevation = {-50.0, 90.0} -- pilot view vertical (AI)
 	},
 	Sensors = {
-		RADAR = "AN/APG-63", --en vrai : AN APG 53B
+		RADAR = "AN/APG-53A", --en vrai : AN APG 53B
 		IRST = "OLS-27",
 		OPTIC = "Shkval",--necessite un profil 25T.
 		RWR = "Abstract RWR"
