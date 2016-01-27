@@ -1,22 +1,26 @@
 planes = {
     { 
-    name = _('Rafale_M textur'),
-    file = 'Rafale_M textur.miz',
+    name = _('Cold Start'),
+    file = 'a4e_cold_start.miz',
 	},
 	{ 
-    name = _('Rafale_M Flugzeugtraeger'),
-    file = 'Rafale_M Flugzeugtraeger.miz',
+    name = _('Free Flight'),
+    file = 'a4e_free_flight.miz',
     },
     { 
-    name = _('Rafale_M Intercept'),
-    file = 'Rafale_M Intercept.miz',
+    name = _('Ground Attack'),
+    file = 'a4e_ground_attack.miz',
     },
     { 
-    name = _('Rafale_M Abfangen'),
-    file = 'Rafale_M Abfangen.miz',
+    name = _('Dogfight'),
+    file = 'a4e_dogfight.miz',
     },
 	{ 
-    name = _('Rafale_M Dogfight'),
-    file = 'Rafale_M dogfight.miz',
+    name = _('Takeoff'),
+    file = 'a4e_takeoff.miz',
+    },
+	{ 
+    name = _('Landing'),
+    file = 'a4e_landing.miz',
     },
 }

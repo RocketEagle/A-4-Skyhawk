@@ -1,4 +1,4 @@
-local self_ID = "A-4E Skyhawk by Archimaede"
+local self_ID = "A-4E Skyhawk by Hoggit Dev"
 declare_plugin(self_ID,
 {
 image     	 = "FC3.bmp",
@@ -9,7 +9,7 @@ displayName  = _("A-4E"),
 fileMenuName = _("A-4E"),
 update_id        = "A-4E",
 
-version		 = "0.0.1 pre alpha",
+version		 = "1.5.2 pre alpha",
 state		 = "installed",
 info		 = _("A-4E Skyhawk de l'EVAC, version Archy du 25/09/2015		              Cette version ne modifie pas les fichiers DCS."), 
 

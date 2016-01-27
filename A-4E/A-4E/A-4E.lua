@@ -291,7 +291,7 @@ A_4E =  {
 				ejector_pos_connector = "GUN_EJECT_1",
 				}), 			
 			coltMK12({muzzle_pos_connector = "GUN_POINT_2",
-				rates = {980},
+				rates = {1020},
 				--mixes = {{2,1,1,1,1,1}},
 				effect_arg_number = 434,
 				supply_position = {2, -0.3, -0.4},
