@@ -1,1 +1,0 @@
-These are screenshots that will be used in a monthly writeup by Rumbox for the DCS community and /r/Hoggit.
