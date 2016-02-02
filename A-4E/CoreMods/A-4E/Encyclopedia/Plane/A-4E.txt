@@ -1,0 +1,31 @@
+A-4E Skyhawk
+Plane/A-4E.png
+A-4E
+
+Name: A-4E Skyhawk
+Type: 
+Crew: 
+Length: 11.85 m
+Wing span: 9.11 m
+Height: 4.19 m
+Wing area: 17.5 m2
+Weight Empty: 3340 Kg
+Maximum Weight for takeoff: 5785 kg
+Maximum Weight for normal landing: 5000 Kg
+Maximum internal fuel: 1549 kg
+Maximum Mach at height: 0.95
+Maximum Mach at S/L: 0.85
+Service ceiling: 12 800 m
+Maximum range: 1230 km
+G limit: 9.0 g
+Normal G: +7.5/-3.5 g
+Thrust Rating (ISA sea level): 2x2860 kg
+
+
+Armament: 
+ - 2 x Matra Magic
+ - 2 x Rocket Pods
+ - Practice Bombs
+ - BL-755 Cluster Bombs
+ - 150 x 30 mm Cannon Pod
+
