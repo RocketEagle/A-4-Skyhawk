@@ -325,13 +325,18 @@ A_4E =  {
                 { CLSID    =     "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}" }, --LAU-10 Zuni
                 
                 --MISSILES--
-                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon1b", arg_value = 0.1 }, --AGM 45 SHRIKE    
+                { CLSID    =     "{AGM45_SHRIKE}", connector = "Pylon1b", arg_value = 0.1 }, --AGM 45 SHRIKE   
+				{ CLSID    =     "{AGM12_B}" }, --AGM-12B
+				
                 
                 --BOMBS--                
                 { CLSID    =     "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
                 { CLSID    =     "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
                 { CLSID    =     "{ADD3FAE1-EBF6-4EF9-8EFC-B36B5DDF1E6B}" }, --MK-20 ROCKEYEE
                 { CLSID    =     "{M117}" },
+				
+				--SPECIAL--
+				
             }
         ),    
         pylon(2, 0, -0.047, -0.97, -1.899,
@@ -346,7 +351,8 @@ A_4E =  {
                 { CLSID    =     "{AIM-9B}" },
                 
                 --MISSILES
-                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon2b", arg_value = 0.1 }, --AGM 45 SHRIKE    
+                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon2b", arg_value = 0.1 }, --AGM 45 SHRIKE
+				{ CLSID    =     "{AGM12_C}" }, --AGM-12C
                 
                 --BOMBS--
                 { CLSID    =    "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
@@ -407,7 +413,8 @@ A_4E =  {
                 { CLSID    =     "{AIM-9B}" },
                 
                 --MISSILES
-                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon4b", arg_value = 0.1 }, --AGM 45 SHRIKE    
+                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon4b", arg_value = 0.1 }, --AGM 45 SHRIKE
+				{ CLSID    =     "{AGM12_C}" }, --AGM-12C
                 
                 --BOMBS--
                 { CLSID    =    "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
