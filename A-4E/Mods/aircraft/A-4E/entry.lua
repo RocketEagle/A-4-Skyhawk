@@ -2,9 +2,9 @@ declare_plugin("A-4E Skyhawk by Hoggit Dev",
 {
 installed 	 = true,
 dirName	  	 = current_mod_path,
-version		 = "1.5.2 WIP",	-- 	 
+version		 = "1.5.2 Alpha",	-- 	 
 state		 = "installed",
-info		 = _("A-4E Skyhawk de l'EVAC, version Archy du 25/09/2015."),
+info		 = _("A-4E Skyhawk"),
 
 binaries   =
 {

@@ -6,7 +6,7 @@ displayName  = _("A-4E"),
 
 fileMenuName = _("A-4E"),
 update_id        = "A-4E",
-version		 = "1.5.2 WIP",		 
+version		 = "1.5.2 Alpha",		 
 state		 = "installed",
 info		 = _("A-4E Skyhawk AI"),
 encyclopedia_path = current_mod_path..'/Encyclopedia',

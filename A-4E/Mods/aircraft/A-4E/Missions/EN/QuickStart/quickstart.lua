@@ -1,14 +1,23 @@
 planes = {
     { 
-    name = _('Flight over Tbilisi'),
-    file = 'TF-51_flight over town.miz',
+    name = _('Cold Start'),
+    file = 'A-4E_.miz',
     },
 	{ 
-    name = _('Hot start from Batumi parking'),
-    file = 'TF-51_Hot start.miz',
+    name = _('Hot-Takeoff'),
+    file = 'A-4E_takeoff.miz',
     },
 	{ 
-    name = _('Cold start in Krymsk'),
-    file = 'TF-51_Cold Start.miz',
+    name = _('Free Flight'),
+    file = 'A-4E_free_flight.miz',
+    },
+	name = _('Carrier Landing'),
+    file = 'A-4E_carrier_landing.miz',
+    },
+	name = _('Dogfight'),
+    file = 'A-4E_Dogfight.miz',
+    },
+	name = _('Ground Attack'),
+    file = 'A-4E_ground_attack.miz',
     },
 }
