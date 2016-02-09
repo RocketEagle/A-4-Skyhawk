@@ -6,9 +6,14 @@ installed 	 = true, -- if false that will be place holder , or advertising
 dirName	  	 = current_mod_path,
 displayName  = _("A-4E"),
 version		 = "1.5.2 Alpha",
-state		 = "test",
+state		 = "sale",
 info		 = _("A-4E Skyhawk"),
 
+linkBuy =
+        {
+            ED      = "http://www.digitalcombatsimulator.com/",
+            STEAM   = "http://store.steampowered.com/app/223750",
+        },
 Skins	=
 	{
 		{
