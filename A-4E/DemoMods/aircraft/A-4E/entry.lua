@@ -5,9 +5,9 @@ declare_plugin(self_ID,
 installed 	 = true, -- if false that will be place holder , or advertising
 dirName	  	 = current_mod_path,
 displayName  = _("A-4E"),
-version		 = "1.5.2 WIP",
+version		 = "1.5.2 Alpha",
 state		 = "test",
-info		 = _("A-4E Skyhawk de l'EVAC, version Archy du 25/09/2015"),
+info		 = _("A-4E Skyhawk"),
 
 Skins	=
 	{
