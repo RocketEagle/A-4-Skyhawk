@@ -2,7 +2,7 @@ declare_plugin("A-4E Skyhawk by Hoggit Dev",
 {
 installed 	 = true,
 dirName	  	 = current_mod_path,
-version		 = "1.5.2 Alpha",	-- 	 
+version		 = "1.5.2 alpha",	-- 	 
 state		 = "installed",
 info		 = _("A-4E Skyhawk"),
 
