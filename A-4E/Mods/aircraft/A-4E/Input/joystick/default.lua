@@ -68,16 +68,14 @@ join(res.keyCommands,{
 })
 -- joystick axes 
 join(res.axisCommands,{
-{action = iCommandPlaneSelecterHorizontalAbs, name = _('TDC Slew Horizontal'},
-{action = iCommandPlaneSelecterVerticalAbs	, name = _('TDC Slew Vertical'},
-{action = iCommandPlaneRadarHorizontalAbs	, name = _('Radar Horizontal'},
-{action = iCommandPlaneRadarVerticalAbs		, name = _('Radar Vertical'},
+{action = iCommandWheelBrake,		name = _('Wheel Brake')},
+{action = iCommandLeftWheelBrake,	name = _('Wheel Brake Left')},
+{action = iCommandRightWheelBrake,	name = _('Wheel Brake Right')},
 
-{action = iCommandPlaneMFDZoomAbs 			, name = _('MFD Range'},
-{action = iCommandPlaneBase_DistanceAbs 	, name = _('Base/Distance'},
+{action = iCommandPlaneRoll, name = _('Roll')},
+{action = iCommandPlanePitch, name = _('Pitch')},
+{action = iCommandPlaneRudder, name = _('Rudder')},
+{action = iCommandPlaneThrust, name = _('Thrust')},
 
-{action = iCommandWheelBrake,		name = _('Wheel Brake'},
-{action = iCommandLeftWheelBrake,	name = _('Wheel Brake Left'},
-{action = iCommandRightWheelBrake,	name = _('Wheel Brake Right'},
 })
 return res
