@@ -1,4 +1,9 @@
 local res = external_profile("Config/Input/Aircrafts/base_joystick_binding.lua")
+
+local cscripts = folder.."../../Cockpit/Scripts/"
+dofile(cscripts.."devices.lua")
+dofile(cscripts.."command_defs.lua")
+
 join(res.keyCommands,{
 {down = iCommandPlaneAutopilot, name = _('Autopilot - Attitude Hold'), category = 'Autopilot'},
 {down = iCommandPlaneStabHbar, name = _('Autopilot - Altitude Hold'), category = 'Autopilot'},
@@ -21,6 +26,7 @@ join(res.keyCommands,{
 {down = iCommandPlaneFSQuantityIndicatorTest, up = iCommandPlaneFSQuantityIndicatorSelectorINT, name = _('Fuel Quantity Test'), category = 'Systems'},
 {down = iCommandPlaneHook, name = _('Tail Hook'), category = 'Systems'},
 {down = iCommandPlanePackWing, name = _('Folding Wings'), category = 'Systems'},
+{down = Keys.PlaneFlapsTakeoff, name = _('Flaps Takeoff'), category = 'Systems'},
 
 -- Modes
 {down = iCommandPlaneModeBVR, name = _('(2) Beyond Visual Range Mode'), category = 'Modes'},

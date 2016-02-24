@@ -1,6 +1,8 @@
+dofile(LockOn_Options.script_path.."command_defs.lua")
+
 local dev = GetSelf()
 
-local update_time_step = 0.02  --50 time per second
+local update_time_step = 0.006  -- ~166.667Hz matches AFM dll per SilentEagle
 make_default_activity(update_time_step)
 
 local sensor_data = get_base_data()
@@ -9,8 +11,9 @@ local sensor_data = get_base_data()
 local Flaps  = 72 -- This is the number of the command from command_defs
 local FlapsOn = 145
 local FlapsOff = 146
-local FlapsTakeoff = 10001    -- must match PlaneFlapsTakeoff in command_defs.lua!
+local FlapsTakeoff = Keys.PlaneFlapsTakeoff    -- defined in command_defs.lua
 
+local FlapExtensionTimeSeconds = 6      -- flaps take 6 seconds to extend/retract fully
 
 --Creating local variables
 local FLAPS_STATE	=	0 -- 0 = retracted, 0.5 = takeoff, 1.0 = landing -- "current" flap position		
@@ -36,7 +39,7 @@ function SetCommand(command,value)
     end
 
 	if (command == FlapsOn) then
-		FLAPS_TARGET = 1.0
+		FLAPS_TARGET = 1
 	end
 
     if (command == FlapsTakeoff) then
@@ -44,22 +47,38 @@ function SetCommand(command,value)
 	end
 	
 	if (command == FlapsOff) then
-		FLAPS_TARGET = 0.0
+		FLAPS_TARGET = 0
 	end
 
 end
 
 function update()		
-	
-	if ((FLAPS_TARGET ~= FLAPS_STATE) and (FLAPS_TARGET > FLAPS_STATE)) then
-		-- extend flaps in increments of 0.01
-		FLAPS_STATE = FLAPS_STATE + 0.01
-	else
-        -- retract flaps in increments of 0.01
-        FLAPS_STATE = FLAPS_STATE - 0.01
+	local flaps_increment = update_time_step / FlapExtensionTimeSeconds -- sets the speed of flap animation
+    local delta
+
+    -- make primary adjustment if needed
+    if FLAPS_TARGET ~= FLAPS_STATE then
+        if FLAPS_STATE < FLAPS_TARGET then
+            FLAPS_STATE = FLAPS_STATE + flaps_increment
+        else
+            FLAPS_STATE = FLAPS_STATE - flaps_increment
+        end
 	end
 	
-	
+    -- handle rounding errors induced by non-modulo increment remainders
+    if FLAPS_STATE < 0 then
+        FLAPS_STATE = 0
+    elseif FLAPS_STATE > 1 then
+        FLAPS_STATE = 1
+    else
+        if FLAPS_TARGET == 0.5 and FLAPS_STATE ~= 0.5 then
+            delta = math.abs(FLAPS_TARGET-FLAPS_STATE)
+            if delta < flaps_increment then
+                FLAPS_STATE = 0.5
+            end
+        end
+    end
+            
 	set_aircraft_draw_argument_value(9,FLAPS_STATE)
 	set_aircraft_draw_argument_value(10,FLAPS_STATE)
 	

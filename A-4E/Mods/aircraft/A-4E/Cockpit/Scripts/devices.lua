@@ -14,7 +14,8 @@ devices["ADI"]						= counter()--5
 devices["RADAR"]					= counter()--6
 devices["EXTANIM"]					= counter()--7
 devices["SLATS"]					= counter()--8
-devices["AIRBRAKES"]				= counter()--8
---devices["CANOPY"]					= counter()--8
+devices["AIRBRAKES"]				= counter()--9
+devices["FLAPS"]                    = counter()--10
+--devices["CANOPY"]					= counter()--next
 
 
