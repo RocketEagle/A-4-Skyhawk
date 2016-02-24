@@ -27,6 +27,7 @@ join(res.keyCommands,{
 {down = iCommandPlaneHook, name = _('Tail Hook'), category = 'Systems'},
 {down = iCommandPlanePackWing, name = _('Folding Wings'), category = 'Systems'},
 {down = Keys.PlaneFlapsTakeoff, name = _('Flaps Takeoff'), category = 'Systems'},
+{down = Keys.PlaneFlapsStop, name = _('Flaps Stop'), category = 'Systems'},
 
 -- Modes
 {down = iCommandPlaneModeBVR, name = _('(2) Beyond Visual Range Mode'), category = 'Modes'},

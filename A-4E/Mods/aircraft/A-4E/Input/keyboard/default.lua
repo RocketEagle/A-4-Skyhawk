@@ -25,7 +25,9 @@ join(res.keyCommands,{
 {combos = {{key = 'R', reformers = {'LCtrl'}}}, down = iCommandPlaneAirRefuel, name = _('Refueling Boom'), category = _('Systems')},
 {combos = {{key = 'G', reformers = {'LAlt'}}}, down = iCommandPlaneHook, name = _('Tail Hook'), category = _('Systems')},
 {combos = {{key = 'P', reformers = {'RCtrl'}}}, down = iCommandPlanePackWing, name = _('Folding Wings'), category = _('Systems')},
-{combos = {{key = 'F', reformers = {'LAlt'}}}, down = Keys.PlaneFlapsTakeoff, name = _('Flaps Takeoff'), category = _('Systems')},
+
+{combos = {{key = 'F', reformers = {'LCtrl','LShift'}}}, down = Keys.PlaneFlapsTakeoff, name = _('Flaps Takeoff'), category = _('Systems')},
+{combos = {{key = 'F', reformers = {'LAlt'}}}, down = Keys.PlaneFlapsStop, name = _('Flaps Stop'), category = _('Systems')},
 
 -- Modes
 {combos = {{key = '2'}}, down = iCommandPlaneModeBVR, name = _('(2) Beyond Visual Range Mode'), category = _('Modes')},

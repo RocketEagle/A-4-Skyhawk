@@ -19,6 +19,7 @@ Keys =
 
     -- add custom commands here --
     PlaneFlapsTakeoff = 10001,
+    PlaneFlapsStop = 10002,
 
 }
 
