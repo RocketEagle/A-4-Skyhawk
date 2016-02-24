@@ -15,8 +15,10 @@ local dev = GetSelf()
 local update_time_step = 0.006  -- ~166.667Hz matches AFM dll per SilentEagle
 make_default_activity(update_time_step)
 
-local sensor_data = get_base_data()
+local sensor_data = get_base_data()  
 
+local rate_met2knot = 0.539956803456
+local ias_knots = 0 -- * rate_met2knot
 
 local Flaps  = 72 -- This is the number of the command from command_defs
 local FlapsOn = 145
@@ -37,6 +39,7 @@ dev:listen_command(FlapsOn)
 dev:listen_command(FlapsOff)
 dev:listen_command(FlapsStop)
 dev:listen_command(FlapsTakeoff)
+
 
 
 function SetCommand(command,value)			
@@ -69,13 +72,30 @@ function SetCommand(command,value)
         end
         MOVING = 1 - MOVING
     end
-
+    
+    ias_knots = sensor_data.getIndicatedAirSpeed() * 3.6 * rate_met2knot
+    if ias_knots > 350 then
+      FLAPS_TARGET = 0
+    elseif ias_knots > 260 then
+      if FLAPS_TARGET > 0.5 then
+        FLAPS_TARGET = 0.5
+      end
+    end
 end
 
 function update()		
 	local flaps_increment = update_time_step / FlapExtensionTimeSeconds -- sets the speed of flap animation
     local delta
-
+    
+    ias_knots = sensor_data.getIndicatedAirSpeed() * 3.6 * rate_met2knot
+    if ias_knots > 350 then
+      FLAPS_TARGET = 0
+    elseif ias_knots > 260 then
+      if FLAPS_TARGET > 0.5 then
+        FLAPS_TARGET = 0.5
+      end
+    end
+    
     -- make primary adjustment if needed
     if FLAPS_STATE ~= FLAPS_TARGET then
         if FLAPS_STATE < FLAPS_TARGET then
