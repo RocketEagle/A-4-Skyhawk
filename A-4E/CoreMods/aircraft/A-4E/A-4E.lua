@@ -345,6 +345,7 @@ A_4E =  {
             {
                 --FUEL TANKS--
                 { CLSID	= 	"{DFT-300gal}" },
+				{ CLSID	= 	"{DFT-150gal}" },
             
                 --AIR AIR--
                 { CLSID	=   "{AIM-9B}" },
@@ -376,6 +377,7 @@ A_4E =  {
             {
                 --FUEL TANKS--
                 { CLSID = 	"{DFT-300gal}" },
+				{ CLSID	= 	"{DFT-150gal}" },
                 { CLSID = 	"{D-704_BUDDY_POD}" },
                 
                 --ROCKETS--
@@ -389,6 +391,7 @@ A_4E =  {
                 { CLSID =   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83        
                 { CLSID =   "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}" }, --MK-84
                 { CLSID =   "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+				{ CLSID	= 	"{TER_2_MK83}" },
 				{ CLSID	= 	"{TER_3_MK83}" },				                
                 { CLSID =   "{MER_6_MK81}" },
                 { CLSID =   "{MER_4_MK82}" },
@@ -412,6 +415,7 @@ A_4E =  {
             {
                 --FUEL TANKS--
                 { CLSID = 	"{DFT-300gal}" },
+				{ CLSID	= 	"{DFT-150gal}" },
             
                 --AIR AIR--
                 { CLSID =   "{AIM-9B}" },

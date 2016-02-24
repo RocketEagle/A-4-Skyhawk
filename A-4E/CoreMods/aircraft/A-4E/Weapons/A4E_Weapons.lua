@@ -17,7 +17,7 @@ declare_loadout(	--300 gal tank
 		{
 			{
 				name 	= "DFT_300_GAL_A4E",
-				file	= "DFT_300gal_A4E";
+				file	= "DFT_300gal_a4e_30in";
 				life	= 1;
 				fire	= { 0, 1};
 				username	= "DFT_300_GAL_A4E";
@@ -28,6 +28,36 @@ declare_loadout(	--300 gal tank
 		{
 			{
 				ShapeName	= "DFT_300_GAL_A4E",
+			}, 
+		}, 
+	}
+)
+
+declare_loadout(	--150 gal tank
+	{
+		category		= CAT_FUEL_TANKS,
+		CLSID			= "{DFT-150gal}",
+		attribute		=  {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
+		Picture			= "PTB.png",
+		displayName		= _("Fuel Tank 150 gallons"),
+		Weight_Empty	= 94,
+		Weight			= 94 +  3.028 * 150,
+		Cx_pil			= 0.00145,
+		shape_table_data = 
+		{
+			{
+				name 	= "DFT_150_GAL_A4E",
+				file	= "DFT_150gal_a4e_30in";
+				life	= 1;
+				fire	= { 0, 1};
+				username	= "DFT_150_GAL_A4E";
+				index	= WSTYPE_PLACEHOLDER;
+			},
+		},
+		Elements	= 
+		{
+			{
+				ShapeName	= "DFT_150_GAL_A4E",
 			}, 
 		}, 
 	}
@@ -338,6 +368,39 @@ declare_loadout({	--TER MK83
 			Position	=	{0,	-0.37,	0},
 			ShapeName	=	"mk-83",
 		}, 
+	}, -- end of Elements
+})
+
+declare_loadout({	--TER MK83
+	category		=	CAT_BOMBS,
+	CLSID			= 	"{TER_2_MK83}",
+	Picture			=	"mk83.png",
+	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 32}, --31
+	displayName		=	_("TER,MK-83*2"),
+	attribute		=	{4,	5,	32,	32},
+	Cx_pil			=	0.001959765625,
+	Count			=	2,
+	Weight			=	47.6 + 447*3, --3*    + TER-7 (47.6 kg)
+	Elements	=	
+	{
+		[1]	=	
+		{
+			Position	=	{0,	0,	0},
+			ShapeName	=	"BRU-42_LS",
+			IsAdapter = true,
+		}, 
+		[2]	=	
+		{
+			Position	=	{0,	-0.144,	0.148},
+			ShapeName	=	"mk-83",
+			Rotation	= 	{-45,0,0},
+		}, 
+		[3]	=	
+		{
+			Position	=	{0,	-0.144,	-0.148},--left
+			ShapeName	=	"mk-83",
+			Rotation	= 	{45,0,0},
+		}, 		
 	}, -- end of Elements
 })
 
