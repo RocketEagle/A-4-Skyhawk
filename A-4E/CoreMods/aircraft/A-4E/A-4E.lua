@@ -344,7 +344,7 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID	= 	"{DFT-300gal}", { FiZ = -0.60}, },
+                { CLSID	= 	"{DFT-300gal}" },
             
                 --AIR AIR--
                 { CLSID	=   "{AIM-9B}" },
