@@ -1,4 +1,4 @@
-local res = external_profile("Config/Input/Aircrafts/base_joystick_binding.lua")
+local res = external_profile("Config/Input/Aircrafts/Default/Joystick/default.lua")
 
 local cscripts = folder.."../../Cockpit/Scripts/"
 dofile(cscripts.."devices.lua")
