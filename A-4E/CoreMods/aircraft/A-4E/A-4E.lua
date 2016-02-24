@@ -363,6 +363,7 @@ A_4E =  {
                 { CLSID =   "{MER_4_MK81_P2}" },
                 { CLSID =   "{MER_5_MK81_P2}" },
                 { CLSID =   "{MER_6_MK81}" },    --collision gear
+                { CLSID	=   "{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, -- TER 3*MK82
                 { CLSID =   "{MER_4_MK82_P2}" }, 
 				{ CLSID	= 	"{MER_4_MK82SE_P2}" },				
 
@@ -388,23 +389,21 @@ A_4E =  {
                 { CLSID =   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83        
                 { CLSID =   "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}" }, --MK-84
                 { CLSID =   "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
-                
-				--AIR-TO-AIR--
-				
-				--MISSILES--
-				{ CLSID =   "{AGM12_B}" }, --AGM-12B
-				
-                { CLSID =   "{B83CB620-5BBE-4BEA-910C-EB605A327EF9}" }, --3*MK-20 ROCKEYE --foireux                            
-                { CLSID	=   "{BRU-42_3*Mk-82AIR}" },  -- TER MK-82AIR
-                { CLSID	=   "{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, -- TER 3*MK82
-                
+				{ CLSID	= 	"{TER_3_MK83}" },				                
                 { CLSID =   "{MER_6_MK81}" },
                 { CLSID =   "{MER_4_MK82}" },
                 { CLSID =   "{MER_6_MK82}" },
                 { CLSID =   "{MER_6_MK82SE}" },
                 { CLSID =   "{MER_4_MK20}" },
                 { CLSID =   "{MER_6_MK20}" },
-            }
+				{ CLSID =   "{B83CB620-5BBE-4BEA-910C-EB605A327EF9}" }, --3*MK-20 ROCKEYE --foireux                            
+                { CLSID	=   "{BRU-42_3*Mk-82AIR}" },  -- TER MK-82AIR
+                { CLSID	=   "{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, -- TER 3*MK82
+            
+				--MISSILES--
+				{ CLSID =   "{AGM12_B}" }, --AGM-12B	
+
+			}
         ),    
         pylon(4, 0, -0.047, -0.97, 1.899, 
             {
@@ -431,6 +430,7 @@ A_4E =  {
                 { CLSID =   "{MER_4_MK81_P4}" },
                 { CLSID =   "{MER_5_MK81_P4}" },
                 { CLSID	=   "{MER_6_MK81}" },    --collision gear
+                { CLSID	=   "{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, -- TER 3*MK82
                 { CLSID	=	"{MER_4_MK82_P4}" },
 				{ CLSID	= 	"{MER_4_MK82SE_P4}" },
                 

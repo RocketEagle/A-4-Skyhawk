@@ -265,16 +265,16 @@ declare_loadout({	--TER LAU-61
 })
 
 ---------BOMBS----------------
-declare_loadout({	--TER MK82 --marche pas!
+declare_loadout({	--TER MK82
 	category		=	CAT_BOMBS,
 	CLSID			= 	"{TER_3_MK82}",
 	Picture			=	"mk82.png",
-	--wsTypeOfWeapon	=	GAR_8.wsTypeOfWeapon,
+	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 31}, --31
 	displayName		=	_("TER,MK-82*3"),
-	attribute		=	{4,	5,	9,	31},
+	attribute		=	{4,	5,	32,	31},
 	Cx_pil			=	0.001959765625,
 	Count			=	3,
-	Weight			=	723, --3*    + TER-7 (47.6 kg)
+	Weight			=	47.6 + 241*3, --3*    + TER-7 (47.6 kg)
 	Elements	=	
 	{
 		[1]	=	
@@ -299,6 +299,44 @@ declare_loadout({	--TER MK82 --marche pas!
 		{
 			Position	=	{0,	-0.18,	0},
 			ShapeName	=	"mk-82",
+		}, 
+	}, -- end of Elements
+})
+
+declare_loadout({	--TER MK83
+	category		=	CAT_BOMBS,
+	CLSID			= 	"{TER_3_MK83}",
+	Picture			=	"mk83.png",
+	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 32}, --31
+	displayName		=	_("TER,MK-83*3"),
+	attribute		=	{4,	5,	32,	32},
+	Cx_pil			=	0.001959765625,
+	Count			=	3,
+	Weight			=	47.6 + 447*3, --3*    + TER-7 (47.6 kg)
+	Elements	=	
+	{
+		[1]	=	
+		{
+			Position	=	{0,	0,	0},
+			ShapeName	=	"BRU-42_LS",
+			IsAdapter = true,
+		}, 
+		[2]	=	
+		{
+			Position	=	{0,	-0.144,	0.148},
+			ShapeName	=	"mk-83",
+			Rotation	= 	{-45,0,0},
+		}, 
+		[3]	=	
+		{
+			Position	=	{0,	-0.144,	-0.148},--left
+			ShapeName	=	"mk-83",
+			Rotation	= 	{45,0,0},
+		}, 
+		[4]	=	
+		{
+			Position	=	{0,	-0.37,	0},
+			ShapeName	=	"mk-83",
 		}, 
 	}, -- end of Elements
 })
