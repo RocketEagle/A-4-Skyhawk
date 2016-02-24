@@ -305,7 +305,7 @@ declare_loadout({	--TER MK82 --marche pas!
 declare_loadout({	--MER  MK81 * 6	
 	category		=	CAT_BOMBS,
 	CLSID			= 	"{MER_6_MK81}",
-	Picture			=	"fab100.png",
+	Picture			=	"mk81.png",
 	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
 	displayName		=	_("MER,MK-81*6"),
 	attribute		=	{4,	5,	32,	115}, --9, 31
@@ -390,7 +390,7 @@ declare_loadout({	--MER  MK81 * 6
 declare_loadout({	--MER  MK81 * 4 Pylon 2 
 	category		=	CAT_BOMBS,
 	CLSID			= 	"{MER_4_MK81_P2}",
-	Picture			=	"fab100.png",
+	Picture			=	"mk81.png",
 	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
 	displayName		=	_("MER,MK-81*4"),
 	attribute		=	{4,	5,	32,	115}, --9, 31
@@ -453,7 +453,7 @@ declare_loadout({	--MER  MK81 * 4 Pylon 2
 declare_loadout({	--MER  MK81 * 5 Pylon 2
 	category		=	CAT_BOMBS,
 	CLSID			= 	"{MER_5_MK81_P2}",
-	Picture			=	"fab100.png",
+	Picture			=	"mk81.png",
 	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
 	displayName		=	_("MER,MK-81*5"),
 	attribute		=	{4,	5,	32,	115}, --9, 31
@@ -527,7 +527,7 @@ declare_loadout({	--MER  MK81 * 5 Pylon 2
 declare_loadout({	--MER  MK81 * 4 Pylon 4 
 	category		=	CAT_BOMBS,
 	CLSID			= 	"{MER_4_MK81_P4}",
-	Picture			=	"fab100.png",
+	Picture			=	"mk81.png",
 	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
 	displayName		=	_("MER,MK-81*4"),
 	attribute		=	{4,	5,	32,	115}, --9, 31
@@ -590,7 +590,7 @@ declare_loadout({	--MER  MK81 * 4 Pylon 4
 declare_loadout({	--MER  MK81	* 5 Pylon 4
 	category		=	CAT_BOMBS,
 	CLSID			= 	"{MER_5_MK81_P4}",
-	Picture			=	"fab100.png",
+	Picture			=	"mk81.png",
 	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
 	displayName		=	_("MER,MK-81*5"),
 	attribute		=	{4,	5,	32,	115}, --9, 31
