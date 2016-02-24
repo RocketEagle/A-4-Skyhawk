@@ -34,8 +34,6 @@ dev:listen_command(FlapsOff)
 dev:listen_command(FlapsTakeoff)
 dev:listen_command(FlapsStop)
 
--- flaps value of -1 tells flaps to cycle:  up -> down -> takeoff -> up
--- flaps value of 0/0.5/1.0 sets the position directly
 function SetCommand(command,value)			
 	
 	if (command == Flaps) then

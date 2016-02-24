@@ -28,6 +28,11 @@ join(res.keyCommands,{
 {down = iCommandPlanePackWing, name = _('Folding Wings'), category = 'Systems'},
 {down = Keys.PlaneFlapsTakeoff, name = _('Flaps Takeoff'), category = 'Systems'},
 {down = Keys.PlaneFlapsStop, name = _('Flaps Stop'), category = 'Systems'},
+{down = iCommandPlaneFlapsOn, up = Keys.PlaneFlapsStop, name = _('Flaps Down else Stop (HOTAS)'), category = 'Systems'}, -- for Warthog/HOTAS Flaps lever - realistic
+{down = iCommandPlaneFlapsOff, up = Keys.PlaneFlapsStop, name = _('Flaps Up else Stop (HOTAS)'), category = 'Systems'},  -- for Warthog/HOTAS Flaps lever - realistic
+{down = iCommandPlaneFlapsOn, up = Keys.PlaneFlapsTakeoff, name = _('Flaps Down else Takeoff (HOTAS)'), category = 'Systems'}, -- for Warthog/HOTAS Flaps lever simplified
+{down = iCommandPlaneFlapsOff, up = Keys.PlaneFlapsTakeoff, name = _('Flaps Up else Takeoff (HOTAS)'), category = 'Systems'},  -- for Warthog/HOTAS Flaps lever simplified
+
 
 -- Modes
 {down = iCommandPlaneModeBVR, name = _('(2) Beyond Visual Range Mode'), category = 'Modes'},
