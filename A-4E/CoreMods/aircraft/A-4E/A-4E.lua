@@ -320,20 +320,19 @@ A_4E =  {
             },
             {
                 --ROCKETS--
-                { CLSID    =     "{FD90A1DC-9147-49FA-BF56-CB83EF0BD32B}" }, --LAU-61, M151 HE
-                { CLSID    =    "{174C6E6D-0C3D-42ff-BCB3-0853CB371F5C}" }, --LAU 68, MK5 HE
-                { CLSID    =     "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}" }, --LAU-10 Zuni
+                { CLSID =   "{FD90A1DC-9147-49FA-BF56-CB83EF0BD32B}" }, --LAU-61, M151 HE
+                { CLSID =   "{174C6E6D-0C3D-42ff-BCB3-0853CB371F5C}" }, --LAU 68, MK5 HE
+                { CLSID =   "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}" }, --LAU-10 Zuni
                 
                 --MISSILES--
-                { CLSID    =     "{AGM45_SHRIKE}", connector = "Pylon1b", arg_value = 0.1 }, --AGM 45 SHRIKE   
-				{ CLSID    =     "{AGM12_B}" }, --AGM-12B
-				
-                
+                { CLSID =   "{AGM45_SHRIKE}", connector = "Pylon1b", arg_value = 0.1 }, --AGM 45 SHRIKE   
+				{ CLSID =   "{AGM12_B}" }, --AGM-12B
+				                
                 --BOMBS--                
-                { CLSID    =     "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
-                { CLSID    =     "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
-                { CLSID    =     "{ADD3FAE1-EBF6-4EF9-8EFC-B36B5DDF1E6B}" }, --MK-20 ROCKEYEE
-                { CLSID    =     "{M117}" }, --MK-117
+                { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
+                { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
+                { CLSID =   "{ADD3FAE1-EBF6-4EF9-8EFC-B36B5DDF1E6B}" }, --MK-20 ROCKEYEE
+                { CLSID =	"{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
 				
 				--SPECIAL--
 				
@@ -345,28 +344,28 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID    = "{DFT-300gal}" },
+                { CLSID	= 	"{DFT-300gal}", { FiZ = -0.60}, },
             
                 --AIR AIR--
-                { CLSID    =     "{AIM-9B}" },
+                { CLSID	=   "{AIM-9B}" },
                 
                 --MISSILES
-                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon2b", arg_value = 0.1 }, --AGM 45 SHRIKE
-				{ CLSID    =     "{AGM12_C}" }, --AGM-12C
-				{ CLSID    =     "{AGM12_B}" }, --AGM-12B
+                { CLSID	=   "{AGM45_SHRIKE}", connector = "Pylon2b", arg_value = 0.1 }, --AGM 45 SHRIKE
+				{ CLSID =   "{AGM12_C}" }, --AGM-12C
+				{ CLSID =   "{AGM12_B}" }, --AGM-12B
                 
                 --BOMBS--
-                { CLSID    =    "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
-                { CLSID    =     "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
-                { CLSID    =     "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
-                { CLSID    =     "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83 /!\ n'existe pas!!!
-                { CLSID    =    "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
-                { CLSID    =     "{MER_4_MK81_P2}" },
-                { CLSID    =     "{MER_5_MK81_P2}" },
-                { CLSID    =     "{MER_6_MK81}" },    --collision train
-                { CLSID    =     "{MER_4_MK82_P2}" },    
-                { CLSID    =     "{MER_6_MK82}" },    --collision train
-                { CLSID    =     "{MER_6_MK82_SNAKEYE}" }, --foireux
+                { CLSID =   "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
+                { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
+                { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
+                { CLSID	=   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83
+                { CLSID =   "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+                { CLSID =   "{MER_4_MK81_P2}" },
+                { CLSID =   "{MER_5_MK81_P2}" },
+                { CLSID =   "{MER_6_MK81}" },    --collision gear
+                { CLSID =   "{MER_4_MK82_P2}" }, 
+				{ CLSID	= 	"{MER_4_MK82SE_P2}" },				
+
             }
         ),    
         pylon(3, 0, 0.11, -0.90, 0, 
@@ -375,36 +374,36 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID    = "{DFT-300gal}" },
-                { CLSID    = "{D-704_BUDDY_POD}" },
+                { CLSID = 	"{DFT-300gal}" },
+                { CLSID = 	"{D-704_BUDDY_POD}" },
                 
                 --ROCKETS--
-                { CLSID    =    "{3*LAU-61}" },
-                { CLSID    =    "{9BC82B3D-FE70-4910-B2B7-3E54EFE73262}" }, --3*LAU 68, MK5 HE
+                { CLSID =   "{3*LAU-61}" },
+                { CLSID =   "{9BC82B3D-FE70-4910-B2B7-3E54EFE73262}" }, --3*LAU 68, MK5 HE
                 
                 --BOMBS--            
-                { CLSID    =    "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
-                { CLSID    =     "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
-                { CLSID    =     "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
-                { CLSID    =     "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83 /!\ n'existe pas!!!            
-                { CLSID    =    "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}" }, --MK-84
-                { CLSID    =    "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+                { CLSID =   "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
+                { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
+                { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
+                { CLSID =   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83        
+                { CLSID =   "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}" }, --MK-84
+                { CLSID =   "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
                 
 				--AIR-TO-AIR--
 				
 				--MISSILES--
-				{ CLSID    =     "{AGM12_B}" }, --AGM-12B
+				{ CLSID =   "{AGM12_B}" }, --AGM-12B
 				
-                { CLSID    =    "{B83CB620-5BBE-4BEA-910C-EB605A327EF9}" }, --3*MK-20 ROCKEYE --foireux                            
-                { CLSID =     "{BRU-42_3*Mk-82AIR}" },  -- TER MK-82AIR
-                { CLSID =     "{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, -- TER 3*MK82
+                { CLSID =   "{B83CB620-5BBE-4BEA-910C-EB605A327EF9}" }, --3*MK-20 ROCKEYE --foireux                            
+                { CLSID	=   "{BRU-42_3*Mk-82AIR}" },  -- TER MK-82AIR
+                { CLSID	=   "{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, -- TER 3*MK82
                 
-                { CLSID    =     "{MER_6_MK81}" },
-                { CLSID    =     "{MER_4_MK82}" },
-                { CLSID    =     "{MER_6_MK82}" },
-                { CLSID    =     "{MER_6_MK82_SNAKEYE}" }, --foireux
-                { CLSID    =     "{MER_4_MK20}" },
-                { CLSID    =     "{MER_6_MK20}" },
+                { CLSID =   "{MER_6_MK81}" },
+                { CLSID =   "{MER_4_MK82}" },
+                { CLSID =   "{MER_6_MK82}" },
+                { CLSID =   "{MER_6_MK82SE}" },
+                { CLSID =   "{MER_4_MK20}" },
+                { CLSID =   "{MER_6_MK20}" },
             }
         ),    
         pylon(4, 0, -0.047, -0.97, 1.899, 
@@ -413,27 +412,27 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID    = "{DFT-300gal}" },
+                { CLSID = 	"{DFT-300gal}" },
             
                 --AIR AIR--
-                { CLSID    =     "{AIM-9B}" },
+                { CLSID =   "{AIM-9B}" },
                 
                 --MISSILES
-                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon4b", arg_value = 0.1 }, --AGM 45 SHRIKE
-				{ CLSID    =     "{AGM12_C}" }, --AGM-12C
-				{ CLSID    =     "{AGM12_B}" }, --AGM-12B
+                { CLSID	=   "{AGM45_SHRIKE}", connector = "Pylon4b", arg_value = 0.1 }, --AGM 45 SHRIKE
+				{ CLSID =   "{AGM12_C}" }, --AGM-12C
+				{ CLSID	=   "{AGM12_B}" }, --AGM-12B
                 
                 --BOMBS--
-                { CLSID    =    "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
-                { CLSID    =     "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
-                { CLSID    =     "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
-                { CLSID    =     "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83 /!\ n'existe pas!!!
-                { CLSID    =    "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
-                { CLSID    =     "{MER_4_MK81_P4}" },
-                { CLSID    =     "{MER_5_MK81_P4}" },
-                { CLSID    =     "{MER_6_MK81}" },    --collision train
-                { CLSID    =     "{MER_4_MK82_P4}" },
-                { CLSID    =     "{MER_6_MK82}" },    --collision train
+                { CLSID	=   "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}" }, --AGM-62 WALLEYE
+                { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
+                { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
+                { CLSID =   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83
+                { CLSID =	"{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+                { CLSID =   "{MER_4_MK81_P4}" },
+                { CLSID =   "{MER_5_MK81_P4}" },
+                { CLSID	=   "{MER_6_MK81}" },    --collision gear
+                { CLSID	=	"{MER_4_MK82_P4}" },
+				{ CLSID	= 	"{MER_4_MK82SE_P4}" },
                 
             }
         ),    
@@ -443,18 +442,19 @@ A_4E =  {
             },
             {
                 --ROCKETS--
-                { CLSID    =     "{FD90A1DC-9147-49FA-BF56-CB83EF0BD32B}" }, --LAU-61, M151 HE
-                { CLSID    =    "{174C6E6D-0C3D-42ff-BCB3-0853CB371F5C}" }, --LAU 68, MK5 HE
-                { CLSID    =     "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}" }, --LAU-10 Zuni
+                { CLSID =   "{FD90A1DC-9147-49FA-BF56-CB83EF0BD32B}" }, --LAU-61, M151 HE
+                { CLSID =   "{174C6E6D-0C3D-42ff-BCB3-0853CB371F5C}" }, --LAU 68, MK5 HE
+                { CLSID =   "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}" }, --LAU-10 Zuni
                 
                 --MISSILES--
-                { CLSID =     "{AGM45_SHRIKE}", connector = "Pylon5b", arg_value = 0.1 }, --AGM 45 SHRIKE
-				{ CLSID    =     "{AGM12_B}" }, --AGM-12B
+                { CLSID =   "{AGM45_SHRIKE}", connector = "Pylon5b", arg_value = 0.1 }, --AGM 45 SHRIKE
+				{ CLSID =   "{AGM12_B}" }, --AGM-12B
                 
                 --BOMBS--                
-                { CLSID    =     "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
-                { CLSID    =     "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
-                { CLSID    =     "{ADD3FAE1-EBF6-4EF9-8EFC-B36B5DDF1E6B}" }, --MK-20 ROCKEYE
+                { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
+                { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
+                { CLSID =   "{ADD3FAE1-EBF6-4EF9-8EFC-B36B5DDF1E6B}" }, --MK-20 ROCKEYE
+				{ CLSID =	"{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
 
             }
         ),            

@@ -33,6 +33,7 @@ declare_loadout(	--300 gal tank
 	}
 )
 
+
 declare_loadout(	--D-704 BUDDY POD
 	{
 		category		= CAT_FUEL_TANKS,
@@ -204,7 +205,7 @@ declare_loadout({	--AGM 45 SHRIKE
 	Weight	=	39.5 + 181, --AERO-5 + AGM 45
 	Elements	=	
 	{
-		{	ShapeName	=	"AGM-45" , Position	=	{0,	-0.22,	0} }, 
+		{	ShapeName	=	"AGM-45" , Position	=	{0,	-0.22,	0} }, --{0,	-0.22,	0}  
 	}, -- end of Elements
 })
 
@@ -937,9 +938,9 @@ declare_loadout({	--MER  MK82 * 4 Pylon 4
 	}, -- end of Elements
 })
 
-declare_loadout({	--MER  MK82	SNAKEYE	--foireux
+declare_loadout({	--MER  MK82	SNAKEYE
 	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_6_MK82_SNAKEYE}",
+	CLSID			= 	"{MER_6_MK82SE}",
 	Picture			=	"mk82air.png",
 	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 79},
 	displayName		=	_("MER,MK-82 SNAKEYE*6"),
@@ -1021,6 +1022,133 @@ declare_loadout({	--MER  MK82	SNAKEYE	--foireux
 		}, 				
 	}, -- end of Elements
 })
+
+declare_loadout({	--MER  MK82 SNAKEYE * 4 Pylon 2 
+	category		=	CAT_BOMBS,
+	CLSID			= 	"{MER_4_MK82SE_P2}",
+	Picture			=	"mk82air.png",
+	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 79}, --
+	displayName		=	_("MER,MK-82 Snakeye*4"),
+	attribute		=	{4,	5,	32,	114}, --9, 31
+	Cx_pil			=	0.0025,
+	Count			=	4,
+	Weight			=	99.8 + 256.3*4,   --6*241 + MER-7 (99.8 kg)
+	Elements		=	
+	{
+		[1]	=	
+		{
+			Position	=	{0,	0,	0},  
+			ShapeName	=	"mer_a4e", 
+			IsAdapter   =   true,
+		}, 		
+		[2]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{1.101,	-0.112,	-0.13},
+			ShapeName	=	"MK-82_Snakeye",
+			Rotation	= 	{45,0,0},
+		}, 
+		[3]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{-1.167, -0.112,	-0.13},
+			ShapeName	=	"MK-82_Snakeye",
+			Rotation	= 	{45,0,0},
+		}, 
+		[4]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{1.101,	-0.309,	0},
+			ShapeName	=	"MK-82_Snakeye",
+		}, 
+		[5]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{-1.167,	 -0.309,	0},
+			ShapeName	=	"MK-82_Snakeye",
+		}, 				
+	}, -- end of Elements
+})
+
+declare_loadout({	--MER  MK82 SNAKEYE * 4 Pylon 4 
+	category		=	CAT_BOMBS,
+	CLSID			= 	"{MER_4_MK82SE_P4}",
+	Picture			=	"mk82air.png",
+	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 79}, --31
+	displayName		=	_("MER,MK-82 Snakeye*4"),
+	attribute		=	{4,	5,	32,	114}, --9, 31
+	Cx_pil			=	0.0025,
+	Count			=	4,
+	Weight			=	99.8 + 256.3*4,   --6*241 + MER-7 (99.8 kg)
+	Elements		=	
+	{
+		[1]	=	
+		{
+			Position	=	{0,	0,	0},  
+			ShapeName	=	"mer_a4e", 
+			IsAdapter   =   true,
+		}, 		
+		[2]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{1.101,	-0.112,	0.13},
+			ShapeName	=	"MK-82_Snakeye",
+			Rotation	= 	{-45,0,0},
+		}, 
+		[3]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{-1.167, -0.112, 0.13},
+			ShapeName	=	"MK-82_Snakeye",
+			Rotation	= 	{-45,0,0},
+		}, 
+		[4]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{1.101,	-0.309,	0},
+			ShapeName	=	"MK-82_Snakeye",
+		}, 
+		[5]	=	
+		{
+			DrawArgs	=	
+			{
+				[1]	=	{1,	1},
+				[2]	=	{2,	1},
+			}, -- end of DrawArgs
+			Position	=	{-1.167,	 -0.309,	0},
+			ShapeName	=	"MK-82_Snakeye",
+		}, 				
+	}, -- end of Elements
+})
+
 
 declare_loadout({	--MER  MK20	* 4 -- foireux ne s'ouvre pas
 	category		=	CAT_BOMBS,
