@@ -3,7 +3,7 @@
 
 
 ---------FUEL TANKS-----------
-declare_loadout(	--300 gal tank
+declare_loadout(	--400 gal tank
 	{
 		category		= CAT_FUEL_TANKS,
 		CLSID			= "{DFT-400gal}",
@@ -99,7 +99,7 @@ declare_loadout(	--D-704 BUDDY POD
 		category		= CAT_FUEL_TANKS,
 		CLSID			= "{D-704_BUDDY_POD}",
 		attribute		=  {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
-		Picture			= "PTB.png",
+		Picture			= "d-704.png",
 		displayName		= _("D-704 Refueling Pod"),
 		Weight_Empty	= 323.9,
 		Weight			= 323.9 +  3.028 * 300,
