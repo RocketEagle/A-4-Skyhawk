@@ -42,6 +42,7 @@ creators[devices.RADAR]			 = {"avSimpleRadar"			,LockOn_Options.script_path.."RA
 creators[devices.SLATS]		 	 = {"avLuaDevice"		    ,LockOn_Options.script_path.."Systems/slats.lua"}
 creators[devices.AIRBRAKES]		 = {"avLuaDevice"		    ,LockOn_Options.script_path.."Systems/airbrakes.lua"}
 creators[devices.FLAPS]          = {"avLuaDevice"           ,LockOn_Options.script_path.."Systems/flaps.lua"}
+creators[devices.GEAR]           = {"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gear.lua"}
 creators[devices.EXTANIM]		 = {"avLuaDevice"			,LockOn_Options.script_path.."externalanimations.lua"}
 --creators[devices.CANOPY]		 = {"avLuaDevice"		    ,LockOn_Options.script_path.."Systems/canopy.lua"}
 

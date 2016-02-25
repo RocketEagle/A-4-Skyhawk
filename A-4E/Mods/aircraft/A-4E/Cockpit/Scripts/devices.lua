@@ -16,6 +16,7 @@ devices["EXTANIM"]					= counter()--7
 devices["SLATS"]					= counter()--8
 devices["AIRBRAKES"]				= counter()--9
 devices["FLAPS"]                    = counter()--10
+devices["GEAR"]                     = counter()--11
 --devices["CANOPY"]					= counter()--next
 
 
