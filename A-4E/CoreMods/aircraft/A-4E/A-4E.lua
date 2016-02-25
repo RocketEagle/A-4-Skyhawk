@@ -376,6 +376,7 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
+				{ CLSID = 	"{DFT-400gal}" },
                 { CLSID = 	"{DFT-300gal}" },
 				{ CLSID	= 	"{DFT-150gal}" },
                 { CLSID = 	"{D-704_BUDDY_POD}" },

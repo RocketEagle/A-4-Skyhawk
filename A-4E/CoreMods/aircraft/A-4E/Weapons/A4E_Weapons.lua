@@ -6,6 +6,36 @@
 declare_loadout(	--300 gal tank
 	{
 		category		= CAT_FUEL_TANKS,
+		CLSID			= "{DFT-400gal}",
+		attribute		=  {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
+		Picture			= "PTB.png",
+		displayName		= _("Fuel Tank 400 gallons"),
+		Weight_Empty	= 94,
+		Weight			= 94 +  3.028 * 400,
+		Cx_pil			= 0.00145,
+		shape_table_data = 
+		{
+			{
+				name 	= "DFT_400_GAL_A4E",
+				file	= "DFT_400gal_a4e";
+				life	= 1;
+				fire	= { 0, 1};
+				username	= "DFT_400_GAL_A4E";
+				index	= WSTYPE_PLACEHOLDER;
+			},
+		},
+		Elements	= 
+		{
+			{
+				ShapeName	= "DFT_400_GAL_A4E",
+			}, 
+		}, 
+	}
+)
+
+declare_loadout(	--300 gal tank
+	{
+		category		= CAT_FUEL_TANKS,
 		CLSID			= "{DFT-300gal}",
 		attribute		=  {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 		Picture			= "PTB.png",
