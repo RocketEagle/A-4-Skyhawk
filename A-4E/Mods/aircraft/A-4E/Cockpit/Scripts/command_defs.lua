@@ -21,6 +21,10 @@ Keys =
     PlaneFlapsTakeoff = 10001,
     PlaneFlapsStop = 10002,
 
+    SpoilersArmToggle = 10003,
+    SpoilersArmOn = 10004,
+    SpoilersArmOff = 10005,
+
 }
 
 start_command   = 3000

@@ -410,7 +410,10 @@ keyCommands = {
     {down = iCommandPlaneFlapsOff, up = Keys.PlaneFlapsStop, name = _('Flaps Up else Stop (HOTAS)'), category = 'HOTAS'},  -- for Warthog/HOTAS Flaps lever - realistic
     {down = iCommandPlaneFlapsOn, up = Keys.PlaneFlapsTakeoff, name = _('Flaps Down else Takeoff (HOTAS)'), category = 'HOTAS'}, -- for Warthog/HOTAS Flaps lever - simplified
     {down = iCommandPlaneFlapsOff, up = Keys.PlaneFlapsTakeoff, name = _('Flaps Up else Takeoff (HOTAS)'), category = 'HOTAS'},  -- for Warthog/HOTAS Flaps lever - simplified
-
+    {down = Keys.SpoilersArmToggle, name = _('Spoilers ARM-OFF Toggle'), category = _('Systems')},
+    {down = Keys.SpoilersArmOn, name = _('Spoilers ARM-OFF: ON'), category = _('Systems')},
+    {down = Keys.SpoilersArmOff, name = _('Spoilers ARM-OFF: OFF'), category = _('Systems')},
+    {down = Keys.SpoilersArmOn, up = Keys.SpoilersArmOff, name = _('Spoilers ARM-OFF (HOTAS)'), category = 'HOTAS'},
 },
 
 -- joystick axes 

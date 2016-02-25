@@ -414,5 +414,9 @@ keyCommands = {
     --
     {combos = {{key = 'F', reformers = {'LCtrl','LShift'}}}, down = Keys.PlaneFlapsTakeoff, name = _('Flaps Takeoff'), category = _('Systems')},
     {combos = {{key = 'F', reformers = {'LAlt'}}}, down = Keys.PlaneFlapsStop, name = _('Flaps Stop'), category = _('Systems')},
+    {down = Keys.SpoilersArmToggle, name = _('Spoilers ARM-OFF Toggle'), category = _('Systems')},
+    {down = Keys.SpoilersArmOn, name = _('Spoilers ARM-OFF: ON'), category = _('Systems')},
+    {down = Keys.SpoilersArmOff, name = _('Spoilers ARM-OFF: OFF'), category = _('Systems')},
+
 },
 }
