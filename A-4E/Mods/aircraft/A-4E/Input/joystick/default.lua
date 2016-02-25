@@ -230,7 +230,7 @@ keyCommands = {
     -- from base_joystick_binding.lua...
 
     -- Gameplay
-    --{down = iCommandPlaneShipTakeOff, name = _('Ship Take Off Position'), category = _('General')},
+    {down = iCommandPlaneShipTakeOff, name = _('Ship Take Off Position'), category = _('General')},
     {down = iCommandCockpitShowPilotOnOff, name = _('Show Pilot Body'), category = _('General')},
 
     --Flight Control
