@@ -87,7 +87,8 @@ join(res.axisCommands,{
 {action = iCommandPlaneRoll, name = _('Roll')},
 {action = iCommandPlanePitch, name = _('Pitch')},
 {action = iCommandPlaneRudder, name = _('Rudder')},
-{action = iCommandPlaneThrust, name = _('Thrust')},
+
+{action = iCommandPlaneThrustCommon, name = _('Thrust')},
 
 })
 return res
