@@ -6,9 +6,7 @@ make_default_activity(update_time_step)
 local sensor_data = get_base_data()
 
 
-local Airbrake  = 73 -- This is the number of the command from command_defs
-local AirbrakeOn = 147
-local AirbrakeOff = 148
+local Canopy = 71 -- This is the number of the command from command_defs
 
 
 --Creating local variables
@@ -18,26 +16,20 @@ local CANOPY_STATE	=	0
 
 dev:listen_command(Canopy)
 
+--dev:listen_command(CanopyOpenClose) --test
+
 -- getCanopyPos
 -- getCanopyState
 
 
 function SetCommand(command,value)			
 	
-	if (command == Airbrake) then
+	if (command == Canopy) then
 		if (CANOPY_COMMAND == 1) then
 			CANOPY_COMMAND = 0
 		else
 			CANOPY_COMMAND = 1
 		end
-	end
-	
-	if (command == AirbrakeOn) then
-		CANOPY_COMMAND = 1
-	end
-	
-	if (command == AirbrakeOff) then
-		CANOPY_COMMAND = 0
 	end
 	
 	
@@ -49,7 +41,7 @@ function update()
 		-- lower airbrake in increments of 0.02
 		CANOPY_STATE = CANOPY_STATE - 0.01
 	else
-		if (CANOPY_COMMAND == 1 and CANOPY_STATE < 1) then
+		if (CANOPY_COMMAND == 1 and CANOPY_STATE < 0.90) then --CANOPY_STATE == 0.90 is fully open / CANOPY_STATE == 1 is canopy jettisoned
 			-- raise airbrake in increment of 0.02
 			CANOPY_STATE = CANOPY_STATE + 0.01
 		end
