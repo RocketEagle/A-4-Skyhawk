@@ -332,6 +332,7 @@ A_4E =  {
                 { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
                 { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
                 { CLSID =   "{Mk82SNAKEYE}" },                          --MK-82 Snakeye
+				{ CLSID	= 	"{MK-77}" },
 				
 				--SPECIAL--
 				
@@ -343,7 +344,7 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID	= 	"{DFT-300gal}" },
+                { CLSID	= 	"{DFT-300gal_LR}" },
 				{ CLSID	= 	"{DFT-150gal}" },
             
                 --AIR AIR--
@@ -363,6 +364,7 @@ A_4E =  {
                 { CLSID =   "{Mk82SNAKEYE}" },                          --MK-82 Snakeye
                 { CLSID	=   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83
                 { CLSID =   "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+				{ CLSID	= 	"{MK-77}" },
 
                 -- BOMB RACKS --
                 { CLSID =   "{Mk-81_MER_5_L}" },
@@ -398,6 +400,7 @@ A_4E =  {
                 { CLSID =   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83        
                 { CLSID =   "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}" }, --MK-84
                 { CLSID =   "{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+				{ CLSID	= 	"{MK-77}" },
 
                 --BOMB RACKS--
                 { CLSID =   "{Mk-81_MER_6_C}" },
@@ -419,7 +422,7 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID = 	"{DFT-300gal}" },
+                { CLSID = 	"{DFT-300gal_LR}" },
 				{ CLSID	= 	"{DFT-150gal}" },
             
                 --AIR AIR--
@@ -439,6 +442,7 @@ A_4E =  {
                 { CLSID =   "{Mk82SNAKEYE}" },                          --MK-82 Snakeye
                 { CLSID =   "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}" }, --MK-83
                 { CLSID =	"{00F5DAC4-0466-4122-998F-B1A298E34113}" }, --M-117
+				{ CLSID	= 	"{MK-77}" },
 
                 -- BOMB RACKS --
                 { CLSID =   "{Mk-81_MER_5_R}" },
@@ -466,6 +470,7 @@ A_4E =  {
                 { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
                 { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
                 { CLSID =   "{Mk82SNAKEYE}" },                          --MK-82 Snakeye
+				{ CLSID	= 	"{MK-77}" },
 
                 --SPECIAL--
             }
