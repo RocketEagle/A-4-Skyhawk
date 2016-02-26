@@ -54,7 +54,10 @@ function update()
     local gear_pos = get_aircraft_draw_argument_value(6)
     local throttle = sensor_data.getThrottleLeftPosition()
 
-    if gear_pos >= 0.5 and throttle < 0.7 and SPOILER_ARMED == 1 then
+    local tmin = 0.55
+    local tmax = 1.00
+
+    if gear_pos >= 0.5 and throttle < ( (0.7 - tmin)/(tmax-tmin) ) and SPOILER_ARMED == 1 then
         SPOILER_TARGET = 1
     else
         SPOILER_TARGET = 0
