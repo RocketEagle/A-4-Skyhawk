@@ -1,5 +1,170 @@
 -- Weapons definitions here
 
+print("WEAPON TEST")
+-- Support Functions:
+
+-- bombs that can go on MER or TER racks
+local bomb_data = 
+{
+    --use shapename,        mass,       wstype,                 image,                  drag
+    ["Mk-81"]           = { mass = 118, wstype = {4,5,9,30},    pic = 'mk81.png',       cx = 0.00018},
+    ["Mk-82"]           = { mass = 241, wstype = {4,5,9,31},    pic = 'mk82.png',       cx = 0.00025},
+    ["Mk-82 Snakeye"]   = { mass = 241, wstype = {4,5,9,79},    pic = 'mk82air.png',    cx = 0.00025},
+    ["Mk-83"]           = { mass = 447, wstype = {4,5,9,32},    pic = 'mk83.png',       cx = 0.00035},
+    --["ROCKEYE"]         = { mass = 222, wstype = {4,5,38,45},   pic = 'mk20.png',       cx = 0.00070},
+    --["M-117"]           = { mass = 340, wstype = {4,5,9,34},    pic = 'kmgu2.png',      cx = 0.00030},
+}
+
+local rack_data =
+{
+    ["BRU_41"]          = {mass = 99.8, shapename = "mer_a4e",      wstype = {4, 5, 32, WSTYPE_PLACEHOLDER} },
+    ["BRU_42"]          = {mass = 47.6, shapename = "BRU-42_LS",    wstype = {4, 5, 32, WSTYPE_PLACEHOLDER} },
+}
+
+local GALLON_TO_KG = 3.785 * 0.8
+
+function rackme_a4e(element,count,side)
+    if count <= 6 and count > 3 then
+        return bru_41(element,count,side)
+    elseif count <= 3 then
+        return bru_42(element,count,side)
+    end
+end
+
+function bru_41(element,count,side) -- build up to a 6x MER loadout of the specified bomb
+    local bomb_variant = bomb_data[element] or bomb_data["MK-81"]
+    local rack_variant = rack_data["BRU_41"]
+    local sidestr = {"L","C","R"}
+    local data = {}
+
+    data.category           = CAT_BOMBS
+    data.CLSID              = "{"..element.."_MER_"..tostring(count).."_"..sidestr[2+side].."}"
+    data.attribute          = rack_variant.wstype
+    data.Picture            = bomb_variant.pic
+    data.Count              = count
+    data.displayName        = element.." *"..tostring(count).." (MER)"
+    data.wsTypeOfWeapon     = bomb_variant.wstype
+    data.Weight             = rack_variant.mass + count * bomb_variant.mass
+    data.Cx_pil             = 0.001887 + bomb_variant.cx*count
+    data.Elements           =
+    {
+		{
+			Position	=	{0,	0,	0},  
+			ShapeName	=	rack_variant.shapename, 
+			IsAdapter   =   true,
+		},
+    }
+
+	local positions =  {{  1.101, -0.112,  0.13 }, -- front right
+                        { -1.167, -0.112,  0.13 }, -- back right
+                        {  1.101, -0.112, -0.13 }, -- front left
+                        { -1.167, -0.112, -0.13 }, -- back left
+                        {  1.101, -0.309,  0    }, -- front center
+                        { -1.167, -0.309,  0    }} -- back center
+
+    local rotations =  {{ -45, 0, 0}, -- right side
+						{ -45, 0, 0},
+						{  45, 0, 0}, -- left side
+                        {  45, 0, 0},
+						{  0,  0, 0}, -- center
+						{  0,  0, 0}}
+
+    local rightorder5 = {3,4,1,2,5,6}
+    local centerorder4 = {5,6,1,2,3,4}
+    local normalorder = {1,2,3,4,5,6}
+
+    -- for center, mount up to 6 ... if 4, do left and right
+    -- for left, mount up to 5 skipping front right
+    -- for right, mount up to 5 skipping front left
+
+    local offset = 6-count
+    local order = normalorder
+
+    if count == 4 and side == 0 then
+        order = centerorder4
+    elseif (count == 5 or count == 4) and side == 1 then
+        order = rightorder5
+    end
+
+    for i = 1,count do
+        local j = order[i+offset]
+        data.Elements[#data.Elements + 1] = {DrawArgs	=	{{1,1},{2,1}},
+											Position	=	positions[j],
+											ShapeName	=	element,
+											Rotation	=   rotations[j]}
+    end
+
+	return data
+end
+
+
+function bru_42(element,count,side) -- build a TER setup for the specified bombs
+    local bomb_variant = bomb_data[element] or bomb_data["MK-82"]
+    local rack_variant = rack_data["BRU_42"]
+    local sidestr = {"L","C","R"}
+    local data = {}
+
+    data.category           = CAT_BOMBS
+    data.CLSID              = "{"..element.."_TER_"..tostring(count).."_"..sidestr[2+side].."}"
+    data.attribute          = rack_variant.wstype
+    data.Picture            = bomb_variant.pic
+    data.Count              = count
+    data.displayName        = element.." *"..tostring(count).." (TER)"
+    data.wsTypeOfWeapon     = bomb_variant.wstype
+    data.Weight             = rack_variant.mass + count * bomb_variant.mass
+    data.Cx_pil             = 0.001887 + bomb_variant.cx*count
+    data.Elements           =
+    {
+        {
+            Position	=	{0,	0,	0},  
+            ShapeName	=	rack_variant.shapename, 
+            IsAdapter   =   true,
+        },
+    }
+
+    local positions_mk83 = {{0,	-0.144,	 0.148}, -- right
+                            {0,	-0.144,	-0.148}, -- left
+                            {0,	-0.37,	 0}}     -- center
+
+    local positions =  {{0,  0,     0.13},  -- right
+                        {0,  0,    -0.13},  -- left
+                        {0, -0.18,  0}}     -- center
+
+    local rotations =  {{ -45, 0, 0}, -- right
+                        {  45, 0, 0}, -- left
+                        {  0,  0, 0}} -- center
+
+    local rightorder2 = {2,1,3}
+    local centerorder2 = {3,1,2}
+    local leftorder2 = {1,2,3}
+
+    -- for center, mount up to 3 ... if 2, do left and right
+    -- for left, mount up to 2 skipping front right
+    -- for right, mount up to 2 skipping front left
+
+    local offset = 3-count
+    local order = leftorder2 -- default, includes 3 bombs
+
+    if count == 2 then
+        if side == 0 then
+            order = centerorder2
+        elseif  side == 1 then
+            order = rightorder2
+        end
+    end
+
+    for i = 1,count do
+        local j = order[i+offset]
+        data.Elements[#data.Elements + 1] = {DrawArgs	=	{{1,1},{2,1}},
+                                            Position	=	positions[j],
+                                            ShapeName	=	element,
+                                            Rotation	=   rotations[j]}
+    end
+
+    return data
+end
+
+
 
 
 ---------FUEL TANKS-----------
@@ -325,1130 +490,22 @@ declare_loadout({	--TER LAU-61
 })
 
 ---------BOMBS----------------
-declare_loadout({	--TER MK82
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{TER_3_MK82}",
-	Picture			=	"mk82.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 31}, --31
-	displayName		=	_("TER,MK-82*3"),
-	attribute		=	{4,	5,	32,	31},
-	Cx_pil			=	0.001959765625,
-	Count			=	3,
-	Weight			=	47.6 + 241*3, --3*    + TER-7 (47.6 kg)
-	Elements	=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},
-			ShapeName	=	"BRU-42_LS",
-			IsAdapter = true,
-		}, 
-		[2]	=	
-		{
-			Position	=	{0,	0,	0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			Position	=	{0,	0,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		}, 
-		[4]	=	
-		{
-			Position	=	{0,	-0.18,	0},
-			ShapeName	=	"mk-82",
-		}, 
-	}, -- end of Elements
-})
 
-declare_loadout({	--TER MK83
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{TER_3_MK83}",
-	Picture			=	"mk83.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 32}, --31
-	displayName		=	_("TER,MK-83*3"),
-	attribute		=	{4,	5,	32,	32},
-	Cx_pil			=	0.001959765625,
-	Count			=	3,
-	Weight			=	47.6 + 447*3, --3*    + TER-7 (47.6 kg)
-	Elements	=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},
-			ShapeName	=	"BRU-42_LS",
-			IsAdapter = true,
-		}, 
-		[2]	=	
-		{
-			Position	=	{0,	-0.144,	0.148},
-			ShapeName	=	"mk-83",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			Position	=	{0,	-0.144,	-0.148},--left
-			ShapeName	=	"mk-83",
-			Rotation	= 	{45,0,0},
-		}, 
-		[4]	=	
-		{
-			Position	=	{0,	-0.37,	0},
-			ShapeName	=	"mk-83",
-		}, 
-	}, -- end of Elements
-})
+declare_loadout(rackme_a4e("Mk-81", 6, 0))          -- {Mk-81_MER_6_C}
+declare_loadout(rackme_a4e("Mk-81", 5,-1))          -- {Mk-81_MER_5_L}
+declare_loadout(rackme_a4e("Mk-81", 5, 1))          -- {Mk-81_MER_5_R}
+declare_loadout(rackme_a4e("Mk-81", 4,-1))          -- {Mk-81_MER_4_L}
+declare_loadout(rackme_a4e("Mk-81", 4, 1))          -- {Mk-81_MER_4_R}
+declare_loadout(rackme_a4e("Mk-81", 4, 0))          -- {Mk-81_MER_4_C}
 
-declare_loadout({	--TER MK83
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{TER_2_MK83}",
-	Picture			=	"mk83.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 32}, --31
-	displayName		=	_("TER,MK-83*2"),
-	attribute		=	{4,	5,	32,	32},
-	Cx_pil			=	0.001959765625,
-	Count			=	2,
-	Weight			=	47.6 + 447*3, --3*    + TER-7 (47.6 kg)
-	Elements	=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},
-			ShapeName	=	"BRU-42_LS",
-			IsAdapter = true,
-		}, 
-		[2]	=	
-		{
-			Position	=	{0,	-0.144,	0.148},
-			ShapeName	=	"mk-83",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			Position	=	{0,	-0.144,	-0.148},--left
-			ShapeName	=	"mk-83",
-			Rotation	= 	{45,0,0},
-		}, 		
-	}, -- end of Elements
-})
+declare_loadout(rackme_a4e("Mk-82", 6, 0))          -- {Mk-82_MER_6_C}
+declare_loadout(rackme_a4e("Mk-82", 4, 0))          -- {Mk-82_MER_4_C}
+declare_loadout(rackme_a4e("Mk-82", 3, 0))          -- {Mk-82_TER_3_C}
 
-declare_loadout({	--MER  MK81 * 6	
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_6_MK81}",
-	Picture			=	"mk81.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
-	displayName		=	_("MER,MK-81*6"),
-	attribute		=	{4,	5,	32,	115}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	6,
-	Weight			=	99.8 + 118*6,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[6]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 
-		[7]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 				
-	}, -- end of Elements
-})
+declare_loadout(rackme_a4e("Mk-82 Snakeye", 6, 0))  -- {Mk-82 Snakeye_MER_6_C}
+declare_loadout(rackme_a4e("Mk-82 Snakeye", 4, 0))  -- {Mk-82 Snakeye_MER_4_C}
+declare_loadout(rackme_a4e("Mk-82 Snakeye", 3, 0))  -- {Mk-82 Snakeye_TER_3_C}
 
-declare_loadout({	--MER  MK81 * 4 Pylon 2 
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK81_P2}",
-	Picture			=	"mk81.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
-	displayName		=	_("MER,MK-81*4"),
-	attribute		=	{4,	5,	32,	115}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 118*4,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 		
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 				
-	}, -- end of Elements
-})
+declare_loadout(rackme_a4e("Mk-83", 3, 0))          -- {Mk-83_TER_3_C}
+declare_loadout(rackme_a4e("Mk-83", 2, 0))          -- {Mk-83_TER_2_C}
 
-declare_loadout({	--MER  MK81 * 5 Pylon 2
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_5_MK81_P2}",
-	Picture			=	"mk81.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
-	displayName		=	_("MER,MK-81*5"),
-	attribute		=	{4,	5,	32,	115}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	5,
-	Weight			=	99.8 + 118*5,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 		
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 
-		[6]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK81 * 4 Pylon 4 
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK81_P4}",
-	Picture			=	"mk81.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
-	displayName		=	_("MER,MK-81*4"),
-	attribute		=	{4,	5,	32,	115}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 118*4,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK81	* 5 Pylon 4
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_5_MK81_P4}",
-	Picture			=	"mk81.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 30}, --31
-	displayName		=	_("MER,MK-81*5"),
-	attribute		=	{4,	5,	32,	115}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	5,
-	Weight			=	99.8 + 118*5,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"mk-81",
-			Rotation	= 	{-45,0,0},
-		}, 		
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-81",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 
-		[6]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-81",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82	* 6
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_6_MK82}",
-	Picture			=	"mk82.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 31}, --31
-	displayName		=	_("MER,MK-82*6"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	6,
-	Weight			=	99.8 + 241*6,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		}, 
-		[6]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-82",
-		}, 
-		[7]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-82",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82	* 4
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK82}",
-	Picture			=	"mk82.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 31}, --31
-	displayName		=	_("MER,MK-82*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 241*4,  --4*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		},  				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82 * 4 Pylon 2 
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK82_P2}",
-	Picture			=	"mk82.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 31}, --31
-	displayName		=	_("MER,MK-82*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 241*4,   --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 		
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-82",
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-82",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82 * 4 Pylon 4 
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK82_P4}",
-	Picture			=	"mk82.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 31}, --31
-	displayName		=	_("MER,MK-82*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 241*4,   --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 		
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112, 0.13},
-			ShapeName	=	"mk-82",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"mk-82",
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"mk-82",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82	SNAKEYE
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_6_MK82SE}",
-	Picture			=	"mk82air.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 79},
-	displayName		=	_("MER,MK-82 SNAKEYE*6"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	6,
-	Weight			=	99.8 + 256.3*6,  --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{45,0,0},
-		}, 
-		[6]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"MK-82_Snakeye",
-		}, 
-		[7]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"MK-82_Snakeye",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82 SNAKEYE * 4 Pylon 2 
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK82SE_P2}",
-	Picture			=	"mk82air.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 79}, --
-	displayName		=	_("MER,MK-82 Snakeye*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 256.3*4,   --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 		
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	-0.13},
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112,	-0.13},
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"MK-82_Snakeye",
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"MK-82_Snakeye",
-		}, 				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK82 SNAKEYE * 4 Pylon 4 
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK82SE_P4}",
-	Picture			=	"mk82air.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 79}, --31
-	displayName		=	_("MER,MK-82 Snakeye*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 256.3*4,   --6*241 + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 		
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.112,	0.13},
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167, -0.112, 0.13},
-			ShapeName	=	"MK-82_Snakeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.101,	-0.309,	0},
-			ShapeName	=	"MK-82_Snakeye",
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.167,	 -0.309,	0},
-			ShapeName	=	"MK-82_Snakeye",
-		}, 				
-	}, -- end of Elements
-})
-
-
-declare_loadout({	--MER  MK20	* 4 -- foireux ne s'ouvre pas
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK20}",
-	Picture			=	"mk20.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_Cluster, 45}, --31
-	displayName		=	_("MER,MK-20 ROCKEYE*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 222*4,  -- + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.131,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"rockeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.177, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"rockeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.131,	-0.112,	-0.13},
-			ShapeName	=	"rockeye",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.177, -0.112,	-0.13},
-			ShapeName	=	"rockeye",
-			Rotation	= 	{45,0,0},
-		},  				
-	}, -- end of Elements
-})
-
-declare_loadout({	--MER  MK20	* 4 -- foireux ne s'ouvre pas
-	category		=	CAT_BOMBS,
-	CLSID			= 	"{MER_4_MK20}",
-	Picture			=	"mk20.png",
-	wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_Cluster, 45}, --31
-	displayName		=	_("MER,MK-20 ROCKEYE*4"),
-	attribute		=	{4,	5,	32,	114}, --9, 31
-	Cx_pil			=	0.0025,
-	Count			=	4,
-	Weight			=	99.8 + 222*4,  -- + MER-7 (99.8 kg)
-	Elements		=	
-	{
-		[1]	=	
-		{
-			Position	=	{0,	0,	0},  
-			ShapeName	=	"mer_a4e", 
-			IsAdapter   =   true,
-		}, 	
-		[2]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.131,	-0.112,	0.13},  -- 1.29
-			ShapeName	=	"rockeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[3]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.177, -0.112,	0.13}, 	--	-1.01
-			ShapeName	=	"rockeye",
-			Rotation	= 	{-45,0,0},
-		}, 
-		[4]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{1.131,	-0.112,	-0.13},
-			ShapeName	=	"rockeye",
-			Rotation	= 	{45,0,0},
-		}, 
-		[5]	=	
-		{
-			DrawArgs	=	
-			{
-				[1]	=	{1,	1},
-				[2]	=	{2,	1},
-			}, -- end of DrawArgs
-			Position	=	{-1.177, -0.112,	-0.13},
-			ShapeName	=	"rockeye",
-			Rotation	= 	{45,0,0},
-		},  				
-	}, -- end of Elements
-})
-
--- declare_loadout({	--MER  MK20	* 4 -- foireux ne s'ouvre pas
-	-- category		=	CAT_BOMBS,
-	-- CLSID			= 	"{M117}",
-	-- Picture			=	"mk20.png",
-	-- wsTypeOfWeapon	=	{wsType_Weapon, wsType_Bomb, wsType_Bomb_A, 34}, --31
-	-- displayName		=	_("M-117"),
-	-- attribute		=	{4,	5,	32,	114}, --9, 31
-	-- Cx_pil			=	0.0025,
-	-- Count			=	1,
-	-- Weight			=	340,  -- + MER-7 (99.8 kg)
-	-- Elements		=	
-	-- {
-		-- [1]	=	
-		-- {
-			-- Position	=	{0,	0,	0},  
-			-- ShapeName	=	"M-117_A4E", 
-			-- IsAdapter   =   false,
-		-- }, 
-	-- }, -- end of Elements
--- })
-
-
-
-declare_loadout(
-	{
-		category		= CAT_BOMBS,
-		CLSID		=	"{M117}",
-		Picture		=	"M64.png",
-		displayName	=	_("M-117"),
-		Weight	=	340,
-		attribute	=	{4,	5,	9,	90},
-		Elements	=	
-		{
-			[1]	=	
-			{
-				Position	=	{0,0,0},
-				ShapeName	=	"M-117_A4E",
-			}, 
-		}, -- end of Elements
-	}
-)
