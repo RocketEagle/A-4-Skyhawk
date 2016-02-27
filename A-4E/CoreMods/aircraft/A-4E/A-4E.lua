@@ -344,7 +344,7 @@ A_4E =  {
             },
             {
                 --FUEL TANKS--
-                { CLSID	= 	"{DFT-300gal_LR}" },
+                { CLSID	= 	"{DFT-300gal_LR}" }, --		{ CLSID	= 	"{DFT-300gal_LR}",attach_point_position = { -0.10, -0.008, 0.0}},	--another (proper?) posibility to fix 300 gal tank position/angle ?
 				{ CLSID	= 	"{DFT-150gal}" },
             
                 --AIR AIR--
@@ -369,7 +369,8 @@ A_4E =  {
                 -- BOMB RACKS --
                 { CLSID =   "{Mk-81_MER_5_L}" },
                 { CLSID =   "{Mk-81_MER_4_L}" },
-                { CLSID =   "{Mk-82_TER_3_C}" },
+				{ CLSID	=	"{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, --MER MK-82
+                --{ CLSID =   "{Mk-82_TER_3_C}" },
                 { CLSID =   "{Mk-82 Snakeye_TER_3_C}" },
 
             }
@@ -407,7 +408,8 @@ A_4E =  {
                 { CLSID =   "{Mk-81_MER_4_C}" },
                 { CLSID =   "{Mk-82_MER_6_C}" },
                 { CLSID =   "{Mk-82_MER_4_C}" },
-                { CLSID =   "{Mk-82_TER_3_C}" },
+				{ CLSID	=	"{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, --MER MK-82
+                --{ CLSID =   "{Mk-82_TER_3_C}" },
                 { CLSID =   "{Mk-82 Snakeye_MER_6_C}" },
                 { CLSID =   "{Mk-82 Snakeye_MER_4_C}" },
                 { CLSID =   "{Mk-82 Snakeye_TER_3_C}" },
@@ -447,7 +449,8 @@ A_4E =  {
                 -- BOMB RACKS --
                 { CLSID =   "{Mk-81_MER_5_R}" },
                 { CLSID =   "{Mk-81_MER_4_R}" },
-                { CLSID =   "{Mk-82_TER_3_C}" },
+				{ CLSID	=	"{60CC734F-0AFA-4E2E-82B8-93B941AB11CF}" }, --MER MK-82
+                --{ CLSID =   "{Mk-82_TER_3_C}" },
                 { CLSID =   "{Mk-82 Snakeye_TER_3_C}" },
 
             }
@@ -505,14 +508,14 @@ A_4E =  {
             table_data = {
             --       M       Cx0       Cya      B        B4          Omxmax   Aldop      Cymax
 
-                    {0.0,    0.012,    0.10,    0.04,    0.03,        0.5,    14,        1.0,    },
-                    {0.4,    0.0145,    0.10,    0.04,    0.03,       12.56,    14,        1.4,    },
-                    {0.5,    0.015,    0.09,    0.04,    0.03,        12.56,    14,        1.5,    },
+                    {0.0,    0.012,    0.10,    0.04,    0.03,        0.5,    	14,        1.0,    },
+                    {0.4,    0.0145,    0.10,    0.04,    0.03,       10.56,    14,        1.4,    },
+                    {0.5,    0.015,    0.09,    0.04,    0.03,        11.56,    14,        1.5,    },
                     {0.6,    0.015,    0.08,    0.04,    0.03,        12.56,    14,        1.6,    },
-                    {0.7,    0.015,    0.07,    0.04,    0.03,        12.56,    14,        1.5,    },
-                    {0.8,    0.015,    0.06,    0.04,    0.03,        12.56,    14,      1.4,    }, -- Cx0
-                    {0.85,    0.015,    0.06,    0.04,    0.03,       12.56,    14,      1.4,    }, -- 0.030
-                    {0.9,    0.045,    0.05,    0.04,    0.03,        11.0,    14,        1.4,    }, -- 0.060
+                    {0.7,    0.015,    0.07,    0.04,    0.03,        11.56,    14,        1.5,    },
+                    {0.8,    0.015,    0.06,    0.04,    0.03,        10.56,    14,      1.4,    }, -- Cx0
+                    {0.85,    0.015,    0.06,    0.04,    0.03,       9.56,    14,      1.4,    }, -- 0.030
+                    {0.9,    0.045,    0.05,    0.04,    0.03,        9.56,    14,        1.4,    }, -- 0.060
             }
             -- M - Mach number
             -- Cx0 - Coefficient, drag, profile, of the airplane
