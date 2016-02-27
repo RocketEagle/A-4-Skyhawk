@@ -14,7 +14,7 @@ function AddElement(object)
 end
 
 local BASE_COLOR  = {255,0  ,0,60}
-local BASE_COLOR2 = {0,255,0,100} --128,165,0,120
+local BASE_COLOR2 = {255,192,64,100} --128,165,0,120
 local PitchScale   		= MakeMaterial("HUD_grid2.tga",BASE_COLOR2) -- image of the fixed net
 local BASE_COLOR_MAT    = MakeMaterial(nil,BASE_COLOR)
 
