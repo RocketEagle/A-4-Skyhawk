@@ -177,7 +177,7 @@ A_4E =  {
             diameter    =    0.6, -- AFB cone diameter
             exhaust_length_ab    =    4, -- lenght in m
             exhaust_length_ab_K    =    0.707, -- AB animation
-            smokiness_level     =     0.03, 
+            smokiness_level     =     0.4,
         }, -- end of [1]
     }, -- end of engines_nozzles
     
