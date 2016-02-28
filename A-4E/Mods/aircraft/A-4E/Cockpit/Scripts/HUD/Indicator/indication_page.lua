@@ -15,7 +15,7 @@ end
 
 local BASE_COLOR  = {255,0  ,0,60}
 local BASE_COLOR2 = {255,192,64,100} --128,165,0,120
-local PitchScale   		= MakeMaterial("HUD_grid2.tga",BASE_COLOR2) -- image of the fixed net
+local PiperTexture   		= MakeMaterial("HUD_piper.tga",BASE_COLOR2) -- image of the fixed net
 local BASE_COLOR_MAT    = MakeMaterial(nil,BASE_COLOR)
 
 local shape_rotation = (sensor_data.getRoll()) * 57.3
@@ -32,20 +32,20 @@ grid_origin.name 		     = create_guid_string() -- no such function in this scrip
 grid_origin.collimated 		 = true
 AddElement(grid_origin)
 
-local PitchScaleParam	    = CreateElement "ceTexPoly" --this could be the text area on HUD
-PitchScaleParam.name 		= create_guid_string() -- this must be external function call.
-PitchScaleParam.vertices   = {{-grid_radius, grid_radius},
-			   { grid_radius, grid_radius},
-			   { grid_radius,-grid_radius},
-			   {-grid_radius,-grid_radius}}
-PitchScaleParam.indices	= {0,1,2,2,3,0}
-PitchScaleParam.tex_coords = {{0,0},{1,0},{1,1},{0,1}}
-PitchScaleParam.material   = PitchScale	   
-PitchScaleParam.element_params  = {"D_PITCH"}  -- Global Variable to test
-PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,0}} 
-PitchScaleParam.collimated = true
-PitchScaleParam.parent_element = grid_origin.name
-AddElement(PitchScaleParam)
+--local PitchScaleParam	    = CreateElement "ceTexPoly" --this could be the text area on HUD
+--PitchScaleParam.name 		= create_guid_string() -- this must be external function call.
+--PitchScaleParam.vertices   = {{-grid_radius, grid_radius},
+--			   { grid_radius, grid_radius},
+--			   { grid_radius,-grid_radius},
+--			   {-grid_radius,-grid_radius}}
+--PitchScaleParam.indices	= {0,1,2,2,3,0}
+--PitchScaleParam.tex_coords = {{0,0},{1,0},{1,1},{0,1}}
+--PitchScaleParam.material   = PitchScale
+--PitchScaleParam.element_params  = {"D_PITCH"}  -- Global Variable to test
+--PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,0}}
+--PitchScaleParam.collimated = true
+--PitchScaleParam.parent_element = grid_origin.name
+--AddElement(PitchScaleParam)
 
 -------------------------------
 function AddPitchLine(name, tex_params, parent, index)
@@ -81,31 +81,31 @@ end
 
 local FONT_         = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},BASE_COLOR2,50,"test_font") --this is font object declaration. Mig-21 does not have fonts, therefore disabled.
 
-local test_output           = CreateElement "ceStringPoly"
-test_output.name            = create_guid_string()
-test_output.material        = FONT_
-test_output.init_pos        = {70,-70}
-test_output.alignment       = "CenterCenter"
-test_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
-test_output.formats         = {"%06.2f","%s"}    --%06.2f
-test_output.element_params  = {"COCKPIT"}  -- Global Variable to test
-test_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
-test_output.additive_alpha  = true
-test_output.collimated     = true
-AddElement(test_output)
+--local test_output           = CreateElement "ceStringPoly"
+--test_output.name            = create_guid_string()
+--test_output.material        = FONT_
+--test_output.init_pos        = {70,-70}
+--test_output.alignment       = "CenterCenter"
+--test_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
+--test_output.formats         = {"%06.2f","%s"}    --%06.2f
+--test_output.element_params  = {"COCKPIT"}  -- Global Variable to test
+--test_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
+--test_output.additive_alpha  = true
+--test_output.collimated     = true
+--AddElement(test_output)
 
-local test2_output           = CreateElement "ceStringPoly"
-test2_output.name            = create_guid_string()
-test2_output.material        = FONT_
-test2_output.init_pos        = {70,-80}
-test2_output.alignment       = "CenterCenter"
-test2_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
-test2_output.formats         = {"%06.2f","%s"}    --%06.2f
-test2_output.element_params  = {"COCKPIT2"}  -- Global Variable to test
-test2_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
-test2_output.additive_alpha  = true
-test2_output.collimated     = true
-AddElement(test2_output)
+--local test2_output           = CreateElement "ceStringPoly"
+--test2_output.name            = create_guid_string()
+--test2_output.material        = FONT_
+--test2_output.init_pos        = {70,-80}
+--test2_output.alignment       = "CenterCenter"
+--test2_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
+--test2_output.formats         = {"%06.2f","%s"}    --%06.2f
+--test2_output.element_params  = {"COCKPIT2"}  -- Global Variable to test
+--test2_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
+--test2_output.additive_alpha  = true
+--test2_output.collimated     = true
+--AddElement(test2_output)
 
 local ias_output = CreateElement "ceStringPoly"
 ias_output.name = create_guid_string()
@@ -113,7 +113,7 @@ ias_output.material = FONT_
 ias_output.init_pos = {-30,20}
 ias_output.alignment = "RightCenter"
 ias_output.stringdefs = {0.010,0.75 * 0.010, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0}
-ias_output.formats = {"IAS:%3.0f","%s"}
+ias_output.formats = {"%3.0fm/s","%s"}
 ias_output.element_params = {"D_IAS"}
 ias_output.controllers = {{"text_using_parameter",0,0}}
 ias_output.additive_alpha = true
@@ -178,7 +178,7 @@ ALT_output.material = FONT_
 ALT_output.init_pos = {60,20}
 ALT_output.alignment = "RightCenter"
 ALT_output.stringdefs = {0.010,0.75 * 0.010, 0, 0}
-ALT_output.formats = {"ALT:%.0f","%s"}
+ALT_output.formats = {"%.0fm","%s"}
 ALT_output.element_params = {"D_ALT"}
 ALT_output.controllers = {{"text_using_parameter",0,0}}
 ALT_output.additive_alpha = true
@@ -240,9 +240,9 @@ end
 
 function create_textured_box(UL_X,UL_Y,DR_X,DR_Y) -- function that creates textured square. This function is called 2 times in below code.
 
-local size_per_pixel = 1/8
-local texture_size_x = 128
-local texture_size_y = 128
+local size_per_pixel = 1/2
+local texture_size_x = 64
+local texture_size_y = 64
 local W = DR_X - UL_X
 local H = DR_Y - UL_Y
 
@@ -259,26 +259,28 @@ object.vertices =  {{-half_x, half_y},
 				    { half_x,-half_y},
 				    {-half_x,-half_y}}
 object.indices	  = {0,1,2,2,3,0}
-object.tex_coords = {{ux     ,uy},
-					 {ux + w ,uy},
-					 {ux + w ,uy + h},
-				     {ux 	 ,uy + h}}	 
-				 
+object.tex_coords = {{ux -w/2    ,uy-h/2},
+					 {ux + w/2 ,uy-h/2},
+					 {ux + w/2 ,uy + h/2},
+				     {ux-w/2 	 ,uy + h/2}}
+
 return object
 
 end
 
-gun_sight_mark 					= create_textured_box(7,7,25,25) -- this is create_textured_box function call with parameters
-gun_sight_mark.material       	= PitchScale	
-gun_sight_mark.name 			= BASE_COLOR_MAT
+--gun_sight_mark 					= create_textured_box(7,7,25,25) -- this is create_textured_box function call with parameters
+gun_sight_mark 					= create_textured_box(-32,-32,32,32) -- this is create_textured_box function call with parameters
+gun_sight_mark.material       	= PiperTexture
+--gun_sight_mark.material       	= BASE_COLOR_MAT
+gun_sight_mark.name 			= create_guid_string()
 gun_sight_mark.collimated	  	= true
-gun_sight_mark.element_params   = {"WS_GUN_PIPER_AVAILABLE",
-								   "WS_GUN_PIPER_AZIMUTH",
-								   "WS_GUN_PIPER_ELEVATION"} 
+--gun_sight_mark.element_params   = {"WS_GUN_PIPER_AVAILABLE",
+--								   "WS_GUN_PIPER_AZIMUTH",
+--								   "WS_GUN_PIPER_ELEVATION"}
 								   
-gun_sight_mark.controllers 	   = {{"parameter_in_range"				,0,0.9,1.1},--check that piper available using WS_GUN_PIPER_AVAILABLE
-								  {"move_left_right_using_parameter",1, 0.73 },	--azimuth move by WS_GUN_PIPER_AZIMUTH , 0.73 is default collimator distance (from eye to HUD plane)
-								  {"move_up_down_using_parameter"   ,2, 0.73 }, --elevation move by WS_GUN_PIPER_ELEVATION
-								 }
+--gun_sight_mark.controllers 	   = {{"parameter_in_range"				,0,0.9,1.1},--check that piper available using WS_GUN_PIPER_AVAILABLE
+--								  {"move_left_right_using_parameter",1, 0.73 },	--azimuth move by WS_GUN_PIPER_AZIMUTH , 0.73 is default collimator distance (from eye to HUD plane)
+--								  {"move_up_down_using_parameter"   ,2, 0.73 }, --elevation move by WS_GUN_PIPER_ELEVATION
+--								 }
 AddElement(gun_sight_mark)
 

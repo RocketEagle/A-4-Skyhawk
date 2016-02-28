@@ -13,8 +13,9 @@ local current_HDG=get_param_handle("D_HDG")
 local current_ALT=get_param_handle("D_ALT")
 local current_ALT_SOURCE=get_param_handle("ALT_SOURCE")
 local current_VV=get_param_handle("D_VV")
-local current_test1=get_param_handle("COCKPIT")
-local current_test2=get_param_handle("COCKPIT2")
+--local current_test1=get_param_handle("COCKPIT")
+--local current_test2=get_param_handle("COCKPIT2")
+--local current_piper=get_param_handle("WS_GUN_PIPER_AVAILABLE")
 
 local sensor_data = get_base_data()
 
@@ -34,8 +35,9 @@ function update()
     current_ALT:set(sensor_data.getBarometricAltitude())
     current_ALT_SOURCE:set("B") -- TODO
     current_VV:set(sensor_data.getVerticalVelocity())
-    current_test1:set(12.34)
-    current_test2:set(567.89)
+--    current_test1:set(12.34)
+--    current_test2:set(567.89)
+--    current_piper:set(1.0)
 end
 
 -- sensor_data
