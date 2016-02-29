@@ -31,7 +31,7 @@ function update()
     current_IAS:set(sensor_data.getIndicatedAirSpeed())
     current_AOA:set(sensor_data.getAngleOfAttack())
     current_G:set(0) --TODO
-    current_HDG:set(sensor_data.getHeading())
+    current_HDG:set(360.0-(sensor_data.getHeading()*360.0/(2.0*math.pi)))
     current_ALT:set(sensor_data.getBarometricAltitude())
     current_ALT_SOURCE:set("B") -- TODO
     current_VV:set(sensor_data.getVerticalVelocity())
