@@ -14,8 +14,8 @@ function AddElement(object)
 end
 
 local BASE_COLOR  = {255,0  ,0,60}
-local BASE_COLOR2 = {255,192,64,100} --128,165,0,120
-local GunsightTexture   		= MakeMaterial("gunsight.tga",BASE_COLOR2) -- image of the fixed net
+local GUNSIGHT_COLOR = {255,128,0,192}
+local GunsightTexture   = MakeMaterial("gunsight.tga",GUNSIGHT_COLOR)
 local BASE_COLOR_MAT    = MakeMaterial(nil,BASE_COLOR)
 
 local shape_rotation = (sensor_data.getRoll()) * 57.3
@@ -79,34 +79,37 @@ function AddPitchLine(name, tex_params, parent, index)
 end
 -------------------------------------------
 
-local FONT_         = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},BASE_COLOR2,50,"test_font") --this is font object declaration. Mig-21 does not have fonts, therefore disabled.
+local FONT_         = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},GUNSIGHT_COLOR,50,"test_font") --this is font object declaration. Mig-21 does not have fonts, therefore disabled.
 
---local test_output           = CreateElement "ceStringPoly"
---test_output.name            = create_guid_string()
---test_output.material        = FONT_
---test_output.init_pos        = {70,-70}
---test_output.alignment       = "CenterCenter"
---test_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
---test_output.formats         = {"%06.2f","%s"}    --%06.2f
---test_output.element_params  = {"COCKPIT"}  -- Global Variable to test
---test_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
---test_output.additive_alpha  = true
---test_output.collimated     = true
---AddElement(test_output)
+--[[
+local test_output           = CreateElement "ceStringPoly"
+test_output.name            = create_guid_string()
+test_output.material        = FONT_
+test_output.init_pos        = {70,-70}
+test_output.alignment       = "CenterCenter"
+test_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
+test_output.formats         = {"%06.2f","%s"}    --%06.2f
+test_output.element_params  = {"COCKPIT"}  -- Global Variable to test
+test_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
+test_output.additive_alpha  = true
+test_output.collimated     = true
+AddElement(test_output)
 
---local test2_output           = CreateElement "ceStringPoly"
---test2_output.name            = create_guid_string()
---test2_output.material        = FONT_
---test2_output.init_pos        = {70,-80}
---test2_output.alignment       = "CenterCenter"
---test2_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
---test2_output.formats         = {"%06.2f","%s"}    --%06.2f
---test2_output.element_params  = {"COCKPIT2"}  -- Global Variable to test
---test2_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
---test2_output.additive_alpha  = true
---test2_output.collimated     = true
---AddElement(test2_output)
+local test2_output           = CreateElement "ceStringPoly"
+test2_output.name            = create_guid_string()
+test2_output.material        = FONT_
+test2_output.init_pos        = {70,-80}
+test2_output.alignment       = "CenterCenter"
+test2_output.stringdefs      = {0.01,0.75 * 0.01, 0, 0}
+test2_output.formats         = {"%06.2f","%s"}    --%06.2f
+test2_output.element_params  = {"COCKPIT2"}  -- Global Variable to test
+test2_output.controllers     = {{"text_using_parameter",0,0}} --first index is for element_params (starting with 0) , second for formats ( starting with 0)
+test2_output.additive_alpha  = true
+test2_output.collimated     = true
+AddElement(test2_output)
+--]]
 
+--[[
 local ias_output = CreateElement "ceStringPoly"
 ias_output.name = create_guid_string()
 ias_output.material = FONT_
@@ -159,18 +162,20 @@ G_output.additive_alpha = true
 G_output.collimated = true
 AddElement(G_output)
 
+
 local HDG_output = CreateElement "ceStringPoly"
 HDG_output.name = create_guid_string()
 HDG_output.material = FONT_
 HDG_output.init_pos = {0,-150}
 HDG_output.alignment = "CenterCenter"
 HDG_output.stringdefs = {0.01,0.75 * 0.01, 0, 0}
-HDG_output.formats = {"H:%3.0f","%s"}
+HDG_output.formats = {"H:%3.1f","%s"}
 HDG_output.element_params = {"D_HDG"}
 HDG_output.controllers = {{"text_using_parameter",0,0}}
 HDG_output.additive_alpha = true
 HDG_output.collimated = true
 AddElement(HDG_output)
+
 
 local ALT_output = CreateElement "ceStringPoly"
 ALT_output.name = create_guid_string()
@@ -198,6 +203,7 @@ altitude_source.additive_alpha  = true
 altitude_source.collimated     = true
 AddElement(altitude_source)
 
+
 local VV_output = CreateElement "ceStringPoly"
 VV_output.name = create_guid_string()
 VV_output.material = FONT_
@@ -223,6 +229,7 @@ RPM_output.controllers = {{"text_using_parameter",0,0}}
 RPM_output.additive_alpha = true
 RPM_output.collimated = true
 AddElement(RPM_output)
+--]]
 
 function texture_box (UL_X,UL_Y,W,H) --this is texture box function. Receives some coordinates and dimensions, returns 4 pairs of values. Nothing is calling this function inside script.
 local texture_size_x = 128
