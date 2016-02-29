@@ -15,7 +15,7 @@ end
 
 local BASE_COLOR  = {255,0  ,0,60}
 local BASE_COLOR2 = {255,192,64,100} --128,165,0,120
-local PiperTexture   		= MakeMaterial("HUD_piper.tga",BASE_COLOR2) -- image of the fixed net
+local PiperTexture   		= MakeMaterial("gunsight.tga",BASE_COLOR2) -- image of the fixed net
 local BASE_COLOR_MAT    = MakeMaterial(nil,BASE_COLOR)
 
 local shape_rotation = (sensor_data.getRoll()) * 57.3
