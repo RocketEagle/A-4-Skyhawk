@@ -15,7 +15,7 @@ end
 
 local BASE_COLOR  = {255,0  ,0,60}
 local BASE_COLOR2 = {255,192,64,100} --128,165,0,120
-local PiperTexture   		= MakeMaterial("gunsight.tga",BASE_COLOR2) -- image of the fixed net
+local GunsightTexture   		= MakeMaterial("gunsight.tga",BASE_COLOR2) -- image of the fixed net
 local BASE_COLOR_MAT    = MakeMaterial(nil,BASE_COLOR)
 
 local shape_rotation = (sensor_data.getRoll()) * 57.3
@@ -110,7 +110,7 @@ local FONT_         = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},BAS
 local ias_output = CreateElement "ceStringPoly"
 ias_output.name = create_guid_string()
 ias_output.material = FONT_
-ias_output.init_pos = {-30,20}
+ias_output.init_pos = {-30,-130}
 ias_output.alignment = "RightCenter"
 ias_output.stringdefs = {0.010,0.75 * 0.010, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0}
 ias_output.formats = {"%3.0fm/s","%s"}
@@ -162,7 +162,7 @@ AddElement(G_output)
 local HDG_output = CreateElement "ceStringPoly"
 HDG_output.name = create_guid_string()
 HDG_output.material = FONT_
-HDG_output.init_pos = {0,40}
+HDG_output.init_pos = {0,-150}
 HDG_output.alignment = "CenterCenter"
 HDG_output.stringdefs = {0.01,0.75 * 0.01, 0, 0}
 HDG_output.formats = {"H:%3.0f","%s"}
@@ -175,7 +175,7 @@ AddElement(HDG_output)
 local ALT_output = CreateElement "ceStringPoly"
 ALT_output.name = create_guid_string()
 ALT_output.material = FONT_
-ALT_output.init_pos = {60,20}
+ALT_output.init_pos = {60,-130}
 ALT_output.alignment = "RightCenter"
 ALT_output.stringdefs = {0.010,0.75 * 0.010, 0, 0}
 ALT_output.formats = {"%.0fm","%s"}
@@ -188,7 +188,7 @@ AddElement(ALT_output)
 local altitude_source           = CreateElement "ceStringPoly"
 altitude_source.name            = create_guid_string()
 altitude_source.material        = FONT_
-altitude_source.init_pos        = {80,20}
+altitude_source.init_pos        = {80,-130}
 altitude_source.alignment       = "RightCenter"
 altitude_source.stringdefs      = {0.010,0.75 * 0.010, 0, 0}
 altitude_source.formats         = {"%s","%s"} 
@@ -201,10 +201,10 @@ AddElement(altitude_source)
 local VV_output = CreateElement "ceStringPoly"
 VV_output.name = create_guid_string()
 VV_output.material = FONT_
-VV_output.init_pos = {100,-5}
+VV_output.init_pos = {70,-140}
 VV_output.alignment = "RightCenter"
 VV_output.stringdefs = {0.01,0.75 * 0.01, 0, 0}
-VV_output.formats = {"VV:%5.0f","%s"}
+VV_output.formats = {"VV:%3.0f","%s"}
 VV_output.element_params = {"D_VV"}
 VV_output.controllers = {{"text_using_parameter",0,0}}
 VV_output.additive_alpha = true
@@ -241,8 +241,8 @@ end
 function create_textured_box(UL_X,UL_Y,DR_X,DR_Y) -- function that creates textured square. This function is called 2 times in below code.
 
 local size_per_pixel = 1/2
-local texture_size_x = 64
-local texture_size_y = 64
+local texture_size_x = 200
+local texture_size_y = 200
 local W = DR_X - UL_X
 local H = DR_Y - UL_Y
 
@@ -269,8 +269,8 @@ return object
 end
 
 --gun_sight_mark 					= create_textured_box(7,7,25,25) -- this is create_textured_box function call with parameters
-gun_sight_mark 					= create_textured_box(-32,-32,32,32) -- this is create_textured_box function call with parameters
-gun_sight_mark.material       	= PiperTexture
+gun_sight_mark 					= create_textured_box(-100,-100,100,100) -- this is create_textured_box function call with parameters
+gun_sight_mark.material       	= GunsightTexture
 --gun_sight_mark.material       	= BASE_COLOR_MAT
 gun_sight_mark.name 			= create_guid_string()
 gun_sight_mark.collimated	  	= true
