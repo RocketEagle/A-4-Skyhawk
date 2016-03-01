@@ -29,7 +29,7 @@ function update()
     current_RPM:set(sensor_data.getEngineLeftRPM())
     current_pitch:set(sensor_data.getPitch())
     current_IAS:set(sensor_data.getIndicatedAirSpeed())
-    current_AOA:set(sensor_data.getAngleOfAttack())
+    current_AOA:set((sensor_data.getAngleOfAttack()*360.0/(2.0*math.pi)))
     current_G:set(0) --TODO
     current_HDG:set(360.0-(sensor_data.getHeading()*360.0/(2.0*math.pi)))
     current_ALT:set(sensor_data.getBarometricAltitude())
