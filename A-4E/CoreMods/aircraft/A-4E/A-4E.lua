@@ -569,79 +569,79 @@ A_4E =  {
             -- M - Mach number
             -- Pmax - Engine thrust at military power - kilo Newton
             -- Pfor - Engine thrust at AFB
+			extended = -- added new abilities for engine performance setup. thrust data now can be specified as 2d table by Mach number and altitude. thrust specific fuel consumption tuning added as well 
+			{
+				-- TSFC_max =  -- thrust specific fuel consumption by altitude and Mach number for RPM  100%, 2d table
+				-- {
+				-- 	M 		 = {0,0.3,0.5,0.7,1.0},
+				-- 	H		 = {0,1000,3000,10000},
+				-- 	TSFC	 = {-- M 0  0.3 0.5  0.7  1.0 
+				-- 				{   1,   1,  1,   1,   1},--H = 0
+				-- 				{   1,   1,  1,   1,   1},--H = 1000
+				-- 				{   1,   1,  1,   1,   1},--H = 3000
+				-- 				{   1,   1,  1,   1,   1},--H = 10000
+				-- 	}
+				-- },
+				-- TSFC_afterburner =  -- afterburning thrust specific fuel consumption by altitude and Mach number RPM  100%, 2d table
+				-- {
+					-- M 		 = {0,0.3,0.5,0.7,1.0},
+					-- H		 = {0,1000,3000,10000},
+					-- TSFC	 = {-- M 0  0.3 0.5  0.7  1.0 
+								-- {   0,   0,  0,   0,   0},--H = 0
+								-- {   0,   0,  0,   0,   0},--H = 1000
+								-- {   0,   0,  0,   0,   0},--H = 3000
+								-- {   0,   0,  0,   0,   0},--H = 10000
+					-- }
+				-- },
+				-- TSFC_throttle_responce =  -- correction to TSFC for different engine RPM, 1d table
+				-- {
+					-- RPM 	 = {0, 10, 20, 50 ,100},
+					-- K		 = {1,  1,  1,  1,   1},
+				-- },
+				-- thrust_max = -- thrust interpolation table by altitude and mach number, 2d table
+				-- {
+					-- M 		 = {0,0.3,0.5,0.7,1.0},
+					-- H		 = {0,1000,3000,10000},
+					-- thrust	 = {-- M 0  0.3 0.5  0.7  1.0 
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 0
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 1000
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 3000
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 10000
+					-- }
+				-- },
+				-- thrust_afterburner = -- afterburning thrust interpolation table by altitude and mach number, 2d table
+				-- {
+					-- M 		 = {0,0.3,0.5,0.7,1.0},
+					-- H		 = {0,1000,3000,10000},
+					-- thrust	 = {-- M 0  0.3 0.5  0.7  1.0 
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 0
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 1000
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 3000
+								-- {   1000,   1000,  1000,   1000,   1000},--H = 10000
+					-- }
+				-- }
+				--rpm_acceleration_time_factor = -- time factor for engine governor  ie RPM += (desired_RPM - RPM ) * t(RPM) * dt
+				--{
+				--	RPM  = {0, 50, 100},
+				--	t    = {0.3,0.3,0.3} 
+				--},
+				--rpm_deceleration_time_factor = -- time factor for engine governor 
+				--{
+				--	RPM  = {0, 50, 100},
+				--	t    = {0.3,0.3,0.3} 
+				--},
+				--rpm_throttle_responce = -- required RPM according to throttle position 
+				--{
+				--	throttle = {0  ,0.8 , 1.0},
+				--	RPM      = {50 ,100  ,100},
+				--},
+				--thrust_rpm_responce = -- thrust = K(RPM) * thrust_max(M,H)
+				--{
+				--	RPM = {0  ,50  , 100},
+				--	K   = {0  ,0.05, 1},
+				--},
+			},
         }, -- end of engine
-		extended = -- added new abilities for engine performance setup. thrust data now can be specified as 2d table by Mach number and altitude. thrust specific fuel consumption tuning added as well 
-		{
-			-- TSFC_max =  -- thrust specific fuel consumption by altitude and Mach number for RPM  100%, 2d table
-			-- {
-			-- 	M 		 = {0,0.3,0.5,0.7,1.0},
-			-- 	H		 = {0,1000,3000,10000},
-			-- 	TSFC	 = {-- M 0  0.3 0.5  0.7  1.0 
-			-- 				{   1,   1,  1,   1,   1},--H = 0
-			-- 				{   1,   1,  1,   1,   1},--H = 1000
-			-- 				{   1,   1,  1,   1,   1},--H = 3000
-			-- 				{   1,   1,  1,   1,   1},--H = 10000
-			-- 	}
-			-- },
-			-- TSFC_afterburner =  -- afterburning thrust specific fuel consumption by altitude and Mach number RPM  100%, 2d table
-			-- {
-				-- M 		 = {0,0.3,0.5,0.7,1.0},
-				-- H		 = {0,1000,3000,10000},
-				-- TSFC	 = {-- M 0  0.3 0.5  0.7  1.0 
-							-- {   0,   0,  0,   0,   0},--H = 0
-							-- {   0,   0,  0,   0,   0},--H = 1000
-							-- {   0,   0,  0,   0,   0},--H = 3000
-							-- {   0,   0,  0,   0,   0},--H = 10000
-				-- }
-			-- },
-			-- TSFC_throttle_responce =  -- correction to TSFC for different engine RPM, 1d table
-			-- {
-				-- RPM 	 = {0, 10, 20, 50 ,100},
-				-- K		 = {1,  1,  1,  1,   1},
-			-- },
-			-- thrust_max = -- thrust interpolation table by altitude and mach number, 2d table
-			-- {
-				-- M 		 = {0,0.3,0.5,0.7,1.0},
-				-- H		 = {0,1000,3000,10000},
-				-- thrust	 = {-- M 0  0.3 0.5  0.7  1.0 
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 0
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 1000
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 3000
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 10000
-				-- }
-			-- },
-			-- thrust_afterburner = -- afterburning thrust interpolation table by altitude and mach number, 2d table
-			-- {
-				-- M 		 = {0,0.3,0.5,0.7,1.0},
-				-- H		 = {0,1000,3000,10000},
-				-- thrust	 = {-- M 0  0.3 0.5  0.7  1.0 
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 0
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 1000
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 3000
-							-- {   1000,   1000,  1000,   1000,   1000},--H = 10000
-				-- }
-			-- }
-			--rpm_acceleration_time_factor = -- time factor for engine governor  ie RPM += (desired_RPM - RPM ) * t(RPM) * dt
-			--{
-			--	RPM  = {0, 50, 100},
-			--	t    = {0.3,0.3,0.3} 
-			--},
-			--rpm_deceleration_time_factor = -- time factor for engine governor 
-			--{
-			--	RPM  = {0, 50, 100},
-			--	t    = {0.3,0.3,0.3} 
-			--},
-			--rpm_throttle_responce = -- required RPM according to throttle position 
-			--{
-			--	throttle = {0  ,0.8 , 1.0},
-			--	RPM      = {50 ,100  ,100},
-			--},
-			--thrust_rpm_responce = -- thrust = K(RPM) * thrust_max(M,H)
-			--{
-			--	RPM = {0  ,50  , 100},
-			--	K   = {0  ,0.05, 1},
-			--},
-		},
     },
         
     --damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
