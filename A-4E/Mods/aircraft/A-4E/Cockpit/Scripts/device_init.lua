@@ -46,6 +46,7 @@ creators[devices.GEAR]           = {"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.SPOILERS]       = {"avLuaDevice"           ,LockOn_Options.script_path.."Systems/spoilers.lua"}
 creators[devices.EXTANIM]		 = {"avLuaDevice"			,LockOn_Options.script_path.."externalanimations.lua"}
 creators[devices.CANOPY]		 = {"avLuaDevice"		    ,LockOn_Options.script_path.."Systems/canopy.lua"}
+creators[devices.HUFFER]		 = {"avLuaDevice"		    ,LockOn_Options.script_path.."Systems/huffer.lua"}
 
 
 -- Indicators

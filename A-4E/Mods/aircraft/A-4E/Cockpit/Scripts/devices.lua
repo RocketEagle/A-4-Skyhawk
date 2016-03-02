@@ -19,5 +19,6 @@ devices["FLAPS"]                    = counter()--10
 devices["GEAR"]                     = counter()--11
 devices["SPOILERS"]                 = counter()--12
 devices["CANOPY"]					= counter()--next
+devices["HUFFER"]					= counter()--next
 
 
