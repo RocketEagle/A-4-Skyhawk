@@ -332,7 +332,7 @@ A_4E =  {
                 { CLSID =   "{90321C8E-7ED1-47D4-A160-E074D5ABD902}" }, --MK-81
                 { CLSID =   "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}" }, --MK-82
                 { CLSID =   "{Mk82SNAKEYE}" },                          --MK-82 Snakeye
-				{ CLSID	= 	"{MK-77}" },
+				{ CLSID	= 	"{MK-77}" },								--MK-77
 				
 				--SPECIAL--
 				
@@ -348,7 +348,7 @@ A_4E =  {
 				{ CLSID	= 	"{DFT-150gal}" },
             
                 --AIR AIR--
-                { CLSID	=   "{AIM-9B}" },
+                { CLSID	=   "{AIM-9B}" },	--AIM-9B
                 
                 --ROCKETS--
 
