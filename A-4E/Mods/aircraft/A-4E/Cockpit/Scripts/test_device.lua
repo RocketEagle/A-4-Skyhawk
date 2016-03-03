@@ -13,9 +13,22 @@ local current_HDG=get_param_handle("D_HDG")
 local current_ALT=get_param_handle("D_ALT")
 local current_ALT_SOURCE=get_param_handle("ALT_SOURCE")
 local current_VV=get_param_handle("D_VV")
+local debug_enable=get_param_handle("D_ENABLE")
 --local current_test1=get_param_handle("COCKPIT")
 --local current_test2=get_param_handle("COCKPIT2")
 --local current_piper=get_param_handle("WS_GUN_PIPER_AVAILABLE")
+
+--local iCommandPlaneChangeWeapon = 101
+local iCommandPlaneModeNAV = 105
+local iCommandPlaneModeBVR = 106
+local iCommandPlaneModeA2G = 111
+
+dev:listen_command(iCommandPlaneModeNAV)
+dev:listen_command(iCommandPlaneModeBVR)
+dev:listen_command(iCommandPlaneModeA2G)
+--dev:listen_command(iCommandPlaneChangeWeapon)
+
+debug_enable:set(0)
 
 local sensor_data = get_base_data()
 
@@ -38,6 +51,28 @@ function update()
 --    current_test1:set(12.34)
 --    current_test2:set(567.89)
 --    current_piper:set(1.0)
+end
+
+function SetCommand(command,value)
+	if command == iCommandPlaneModeBVR then
+        -- BVR = beyond visual range, abused here for debug, for stuff you cannot ordinarily see ;)
+        if debug_enable:get()==0 then
+            print_message_to_user("debug enable")
+            debug_enable:set(1)
+        end
+    end
+	if command == iCommandPlaneModeNAV then
+        if debug_enable:get()==1 then
+            print_message_to_user("debug disable")
+            debug_enable:set(0)
+        end
+    end
+	if command == iCommandPlaneModeA2G then
+        --print_message_to_user("A2G mode")
+    end
+--	if command == iCommandPlaneChangeWeapon then
+--        print_message_to_user("change weapon")
+--    end
 end
 
 -- sensor_data
