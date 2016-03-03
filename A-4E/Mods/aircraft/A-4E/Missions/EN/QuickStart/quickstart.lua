@@ -24,3 +24,5 @@ planes = {
     file = 'a4e_landing.miz',
     },
 }
+
+--Zilch, please add mission examples here.
