@@ -78,6 +78,24 @@ function AddPitchLine(name, tex_params, parent, index)
 				  HUD_DEFAULT_LEVEL)
 end
 -------------------------------------------
+arc_radius  	  = 160  -- 105 taille de l'arc exterieur!
+half_width		  = arc_radius * 0.7 - 5
+half_height		  = arc_radius * 0.7 - 5
+
+local HUD_MATERIAL = MakeMaterial(nil,{0,255,0,255})
+local W_width   = half_width/16
+tex_scale = 0.22868
+
+self_W_ind 				= CreateElement "ceMeshPoly"
+--self_W_ind.vertices   	= {rad2xy(4*W_width, math.pi), rad2xy(2*W_width, math.pi), rad2xy(math.sqrt(2)*W_width, -math.pi*0.75), {0,0}, rad2xy(math.sqrt(2)*W_width, -math.pi*0.25), rad2xy(2*W_width, 0), rad2xy(4*W_width, 0)}
+self_W_ind.vertices   	= {{-4*W_width, 0}, {-2*W_width, 0}, {-W_width, -W_width}, {0,0},{W_width, -W_width},{2*W_width, 0},{4*W_width, 0}}
+self_W_ind.indices    	= {0,1,1,2,2,3,3,4,4,5,5,6}
+self_W_ind.primitivetype= "lines"
+self_W_ind.material		= HUD_MATERIAL
+self_W_ind.tex_params 	= {0.52658, 0.22868, tex_scale, tex_scale}
+self_W_ind.element_params = {"D_ROLL"}
+self_W_ind.controllers	= {{"rotate_using_parameter",0,1}}
+AddElement(self_W_ind)
 
 local FONT_         = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},GUNSIGHT_COLOR,50,"test_font") --this is font object declaration. Mig-21 does not have fonts, therefore disabled.
 
