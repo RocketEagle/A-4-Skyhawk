@@ -32,20 +32,20 @@ grid_origin.name 		     = create_guid_string() -- no such function in this scrip
 grid_origin.collimated 		 = true
 AddElement(grid_origin)
 
---local PitchScaleParam	    = CreateElement "ceTexPoly" --this could be the text area on HUD
---PitchScaleParam.name 		= create_guid_string() -- this must be external function call.
---PitchScaleParam.vertices   = {{-grid_radius, grid_radius},
---			   { grid_radius, grid_radius},
---			   { grid_radius,-grid_radius},
---			   {-grid_radius,-grid_radius}}
---PitchScaleParam.indices	= {0,1,2,2,3,0}
---PitchScaleParam.tex_coords = {{0,0},{1,0},{1,1},{0,1}}
---PitchScaleParam.material   = PitchScale
---PitchScaleParam.element_params  = {"D_PITCH"}  -- Global Variable to test
---PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,0}}
---PitchScaleParam.collimated = true
---PitchScaleParam.parent_element = grid_origin.name
---AddElement(PitchScaleParam)
+local PitchScaleParam	    = CreateElement "ceTexPoly" --this could be the text area on HUD
+PitchScaleParam.name 		= create_guid_string() -- this must be external function call.
+PitchScaleParam.vertices   = {{-grid_radius, grid_radius},
+			   { grid_radius, grid_radius},
+			   { grid_radius,-grid_radius},
+			   {-grid_radius,-grid_radius}}
+PitchScaleParam.indices	= {0,1,2,2,3,0}
+PitchScaleParam.tex_coords = {{0,0},{1,0},{1,1},{0,1}}
+PitchScaleParam.material   = PitchScale
+PitchScaleParam.element_params  = {"D_PITCH","D_ROLL"}  -- Global Variable to test
+PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,1},{"rotate_using_parameter",1,1}}
+PitchScaleParam.collimated = true
+PitchScaleParam.parent_element = grid_origin.name
+AddElement(PitchScaleParam)
 
 -------------------------------
 function AddPitchLine(name, tex_params, parent, index)
