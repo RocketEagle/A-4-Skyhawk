@@ -680,7 +680,7 @@ A_4E =  {
     DamageParts = 
     {  
         [1] = "Rafale_M-oblomok-wing-r", -- wing R
-        [2] = "Rafale_M-oblomok-wing-l", -- wing L
+        [2] = "A-4E_damage_wing_L", -- wing L
         [3] = "Rafale_M-oblomok-noise", -- nose
         [4] = "Rafale_M-oblomok-tail-r", -- tail
         [5] = "Rafale_M-oblomok-tail-l", -- tail
