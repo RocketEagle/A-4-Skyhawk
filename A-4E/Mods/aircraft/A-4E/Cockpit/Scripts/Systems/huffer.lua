@@ -1,3 +1,5 @@
+dofile(LockOn_Options.script_path.."command_defs.lua")
+
 local dev = GetSelf()
 
 local update_time_step = 0.02  --50 time per second
@@ -6,7 +8,7 @@ make_default_activity(update_time_step)
 local sensor_data = get_base_data()
 
 
-local Engine_Start = 311 -- This is the number of the command from command_defs
+--local Engine_Start = 311 -- This is the number of the command from command_defs
 
 
 --Creating local variables
@@ -14,36 +16,38 @@ local HUFFER_COMMAND	=	0
 local HUFFER_STATE	=	0		
 
 
-dev:listen_command(Engine_Start)
+--dev:listen_command(Engine_Start)
 
 function SetCommand(command,value)			
 	
-	if (command == Engine_Start) then
-		if (HUFFER_COMMAND == 0) then
-			HUFFER_COMMAND = 1
-		--else
-		--	HUFFER_COMMAND = 1
-		end
-	end
+	-- if (command == Engine_Start) then
+		-- if (HUFFER_COMMAND == 0) then
+			-- HUFFER_COMMAND = 1
+		-- --else
+		-- --	HUFFER_COMMAND = 1
+		-- end
+	-- end
 	
 	
 end
 
-function update()		
+function update()	
+
+local gear_pos = get_aircraft_draw_argument_value(6)
+local throttle = sensor_data.getThrottleLeftPosition()	
+--local speed = 
+
+local tmin = 0.55
+local tmax = 1.00
 	
-	if (HUFFER_COMMAND == 1 and HUFFER_STATE < 1) then
-		-- lower airbrake in increments of 0.002
-		HUFFER_STATE = 0.9 + 0.001
+	if (gear_pos >= 0.5 and throttle <= 0) then--throttle <= ((0.55 - tmin)/(tmax-tmin)) ) then
+		HUFFER_STATE = 1
 	else
-		if (HUFFER_COMMAND == 1 and HUFFER_STATE == 1) then --HUFFER_STATE == 0.90 is fully open / HUFFER_STATE == 1 is HUFFER jettisoned
-			-- raise airbrake in increment of 0.02
-			--HUFFER_STATE = HUFFER_STATE + 0.01
-			HUFFER_COMMAND = 0
-		end
+		HUFFER_STATE = 0
 	end
 	
 	
-	set_aircraft_draw_argument_value(75,HUFFER_STATE)
+	set_aircraft_draw_argument_value(402,HUFFER_STATE)
 	
 end
 

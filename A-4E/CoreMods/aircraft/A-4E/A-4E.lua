@@ -88,6 +88,8 @@ A_4E =  {
     -- add model draw args for network transmitting to this draw_args table (32 limit)
     net_animation ={38, -- canopy
                     0, -- gear
+					400, --front gear door
+					402, --huffer
                     3,
                     5,
                     9,
