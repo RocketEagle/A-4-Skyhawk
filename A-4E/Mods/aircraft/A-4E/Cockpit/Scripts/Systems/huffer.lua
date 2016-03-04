@@ -38,7 +38,7 @@ function update()
 		if (HUFFER_COMMAND == 1 and HUFFER_STATE == 1) then --HUFFER_STATE == 0.90 is fully open / HUFFER_STATE == 1 is HUFFER jettisoned
 			-- raise airbrake in increment of 0.02
 			--HUFFER_STATE = HUFFER_STATE + 0.01
-			HUFFER_COMMAND == 0
+			HUFFER_COMMAND = 0
 		end
 	end
 	
