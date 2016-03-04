@@ -576,10 +576,10 @@ A_4E =  {
 				-- 	M 		 = {0,0.3,0.5,0.7,1.0},
 				-- 	H		 = {0,1000,3000,10000},
 				-- 	TSFC	 = {-- M 0  0.3 0.5  0.7  1.0 
-				-- 				{   1,   1,  1,   1,   1},--H = 0
-				-- 				{   1,   1,  1,   1,   1},--H = 1000
-				-- 				{   1,   1,  1,   1,   1},--H = 3000
-				-- 				{   1,   1,  1,   1,   1},--H = 10000
+								-- {   1,   1,  1,   1,   1},--H = 0
+								-- {   1,   1,  1,   1,   1},--H = 1000
+								-- {   1,   1,  1,   1,   1},--H = 3000
+								-- {   1,   1,  1,   1,   1},--H = 10000
 				-- 	}
 				-- },
 				-- TSFC_afterburner =  -- afterburning thrust specific fuel consumption by altitude and Mach number RPM  100%, 2d table
@@ -596,19 +596,19 @@ A_4E =  {
 				-- TSFC_throttle_responce =  -- correction to TSFC for different engine RPM, 1d table
 				-- {
 					-- RPM 	 = {0, 10, 20, 50 ,100},
-					-- K		 = {1,  1,  1,  1,   1},
+					-- K     = {1,  1,  1,  1,   1},
 				-- },
-				-- thrust_max = -- thrust interpolation table by altitude and mach number, 2d table
-				-- {
-					-- M 		 = {0,0.3,0.5,0.7,1.0},
-					-- H		 = {0,1000,3000,10000},
-					-- thrust	 = {-- M 0  0.3 0.5  0.7  1.0 
-								-- {   1000,   1000,  1000,   1000,   1000},--H = 0
-								-- {   1000,   1000,  1000,   1000,   1000},--H = 1000
-								-- {   1000,   1000,  1000,   1000,   1000},--H = 3000
-								-- {   1000,   1000,  1000,   1000,   1000},--H = 10000
-					-- }
-				-- },
+				thrust_max = -- thrust interpolation table by altitude and mach number, 2d table
+				{
+				      M 		 = {0,0.3,0.5,0.7,1.0},
+				      H		 = {0,1000,3000,10000},
+				      thrust	 = {-- M 0  0.3 0.5  0.7  1.0 
+								{   36877.0,   24973.0,  17212.0,   7441.0,   0.0},--H = 0
+								{   36037.0,   25698.0,  19247.0,   11347.0,  0.0},--H = 1000
+								{   33001.0,   25255.0,  20847.0,   15769.0,  3165.0},--H = 3000
+								{   18624.0,   16106.0,  15218.0,   14611.0,  13313.0},--H = 10000
+				      }
+				},
 				-- thrust_afterburner = -- afterburning thrust interpolation table by altitude and mach number, 2d table
 				-- {
 					-- M 		 = {0,0.3,0.5,0.7,1.0},
