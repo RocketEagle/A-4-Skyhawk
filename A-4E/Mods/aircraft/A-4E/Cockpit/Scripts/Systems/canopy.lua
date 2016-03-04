@@ -10,8 +10,12 @@ local Canopy = 71 -- This is the number of the command from command_defs
 
 
 --Creating local variables
+local initial_canopy = get_aircraft_draw_argument_value(38)
 local CANOPY_COMMAND	=	0   -- 0 closing, 1 opening, 2 jettisoned
-local CANOPY_STATE	=	0		
+
+if (initial_canopy>0) then
+    CANOPY_COMMAND = 1
+end
 
 
 dev:listen_command(Canopy)
@@ -34,23 +38,19 @@ function SetCommand(command,value)
 end
 
 function update()		
-	
-	if (CANOPY_COMMAND == 0 and CANOPY_STATE > 0) then
-		-- lower airbrake in increments of 0.02
-		CANOPY_STATE = CANOPY_STATE - 0.01
-        set_aircraft_draw_argument_value(38,CANOPY_STATE)
-	else
-		if (CANOPY_COMMAND == 1 and CANOPY_STATE <= 0.31) then
-			-- raise airbrake in increment of 0.02
-			CANOPY_STATE = CANOPY_STATE + 0.01
-            if (CANOPY_STATE > 0.31) then
-                CANOPY_COMMAND = 2  -- prevent further changes, the canopy is gone
-            end
-            set_aircraft_draw_argument_value(38,CANOPY_STATE)
-		end
+	local curvalue=get_aircraft_draw_argument_value(38)
+    if curvalue > 0.95 then
+        CANOPY_COMMAND = 2 -- jetissoned
+    end
+	if (CANOPY_COMMAND == 0 and curvalue > 0) then
+		-- lower canopy in increments of 0.01 (50x per second)
+		curvalue = curvalue - 0.01
+        set_aircraft_draw_argument_value(38,curvalue)
+	elseif (CANOPY_COMMAND == 1 and curvalue <= 0.89) then
+        -- raise canopy in increment of 0.01 (50x per second)
+		curvalue = curvalue + 0.01
+        set_aircraft_draw_argument_value(38,curvalue)
 	end
-	
-	
 end
 
 --need_to_be_closed = false -- close lua state after initialization
