@@ -22,3 +22,4 @@ devices["CANOPY"]					= counter()--next
 devices["HUFFER"]					= counter()--next
 
 
+devices["HUD"] = counter()
