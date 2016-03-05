@@ -41,8 +41,8 @@ PitchScaleParam.vertices   = {{-grid_radius, grid_radius},
 PitchScaleParam.indices	= {0,1,2,2,3,0}
 PitchScaleParam.tex_coords = {{0,0},{1,0},{1,1},{0,1}}
 PitchScaleParam.material   = PitchScale
-PitchScaleParam.element_params  = {"D_PITCH","D_ROLL"}  -- Global Variable to test
-PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,1},{"rotate_using_parameter",1,1}}
+PitchScaleParam.element_params  = {"D_PITCH","D_ROLL","D_ENABLE"}  -- Global Variable to test
+PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,1},{"rotate_using_parameter",1,1},{"opacity_using_parameter",2}}
 PitchScaleParam.collimated = true
 PitchScaleParam.parent_element = grid_origin.name
 AddElement(PitchScaleParam)
@@ -93,8 +93,8 @@ self_W_ind.indices    	= {0,1,1,2,2,3,3,4,4,5,5,6}
 self_W_ind.primitivetype= "lines"
 self_W_ind.material		= HUD_MATERIAL
 self_W_ind.tex_params 	= {0.52658, 0.22868, tex_scale, tex_scale}
-self_W_ind.element_params = {"D_ROLL"}
-self_W_ind.controllers	= {{"rotate_using_parameter",0,1}}
+self_W_ind.element_params = {"D_ROLL","D_ENABLE"}
+self_W_ind.controllers	= {{"rotate_using_parameter",0,1},{"opacity_using_parameter",1}}
 AddElement(self_W_ind)
 
 local FONT_         = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},GUNSIGHT_COLOR,50,"test_font") --this is font object declaration. Mig-21 does not have fonts, therefore disabled.
