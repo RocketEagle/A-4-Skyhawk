@@ -8,7 +8,7 @@ local dev 	    = GetSelf()
 
 local current_mach  = get_param_handle("D_MACH") -- obtain shared parameter (created if not exist ), i.e. databus
 local current_RPM=get_param_handle("D_RPMG")
-local current_pitch=get_param_handle("D_PITCH")
+--local current_pitch=get_param_handle("D_PITCH")
 local current_IAS=get_param_handle("D_IAS")
 local current_AOA=get_param_handle("D_AOA")
 local current_G=get_param_handle("current_G")
@@ -25,7 +25,7 @@ local debug_enable=get_param_handle("D_ENABLE")
 dev:listen_command(Keys.PlaneModeNAV)
 dev:listen_command(Keys.PlaneModeBVR)
 dev:listen_command(Keys.PlaneModeGround)
---dev:listen_command(Keys.PlaneChgWeapon)
+dev:listen_command(Keys.PlaneChgWeapon)
 
 debug_enable:set(0)
 
@@ -39,13 +39,19 @@ make_default_activity(update_time_step)
 function update()
 	current_mach:set(sensor_data.getMachNumber())
     current_RPM:set(sensor_data.getEngineLeftRPM())
-    current_pitch:set(sensor_data.getPitch())
-    current_IAS:set(sensor_data.getIndicatedAirSpeed())
+    --current_pitch:set(sensor_data.getPitch())
+    current_IAS:set(sensor_data.getIndicatedAirSpeed()*3.6)
     current_AOA:set((sensor_data.getAngleOfAttack()*360.0/(2.0*math.pi)))
-    current_G:set(0) --TODO
+    current_G:set(sensor_data.getVerticalAcceleration())
     current_HDG:set(360.0-(sensor_data.getHeading()*360.0/(2.0*math.pi)))
-    current_ALT:set(sensor_data.getBarometricAltitude())
-    current_ALT_SOURCE:set("B") -- TODO
+    if sensor_data.getRadarAltitude() > 1200 then
+		current_ALT:set(sensor_data.getBarometricAltitude())
+		current_ALT_SOURCE:set(" ") -- TODO
+	else
+		current_ALT:set(sensor_data.getRadarAltitude())
+		current_ALT_SOURCE:set("R") -- TODO
+	end
+
     current_VV:set(sensor_data.getVerticalVelocity())
 --    current_test1:set(12.34)
 --    current_test2:set(567.89)
@@ -68,10 +74,27 @@ function SetCommand(command,value)
     end
 	if command == Keys.PlaneModeGround then
         --print_message_to_user("A2G mode")
+        --local weap=GetDevice(devices.WEAPON_SYSTEM)
+        --weap:launch_station(0)
+        --weap:launch_station(1)
+        --weap:launch_station(2)
+        --weap:launch_station(3)
+        --weap:launch_station(4)
+        --weap:emergency_jettison()
+		--for i=0, 4, 1 do
+		--	local station = weap:get_station_info(i)
+            --print_message_to_user(i.." count:"..station.count)
+        --    print_message_to_user(i.." w:"..station.weapon.level1..","..station.weapon.level2..","..station.weapon.level3.." "..station.CLSID)
+            --print_message_to_user("n:"..station.weapon.)
+            -- station: CLSID, container, count, weapon
+            -- station.weapon: level1, level2, level3, level4
+            --for key,value in pairs(station.weapon) do print_message_to_user(key..":"..value) end
+            --print_message_to_user("s:"..station.container)
+            --for key,value in pairs(getmetatable(station)) do print_message_to_user("weap:"..key) end
+        --end
     end
---	if command == Keys.PlaneChgWeapon then
---        print_message_to_user("change weapon")
---    end
+	if command == Keys.PlaneChgWeapon then
+    end
 end
 
 -- sensor_data
