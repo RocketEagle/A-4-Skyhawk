@@ -1,3 +1,6 @@
+dofile(LockOn_Options.script_path.."devices.lua")
+dofile(LockOn_Options.script_path.."command_defs.lua")
+
 local dev 	    = GetSelf()
 
 -- indication_page.lua wants these inputs:
@@ -18,15 +21,11 @@ local debug_enable=get_param_handle("D_ENABLE")
 --local current_test2=get_param_handle("COCKPIT2")
 --local current_piper=get_param_handle("WS_GUN_PIPER_AVAILABLE")
 
---local iCommandPlaneChangeWeapon = 101
-local iCommandPlaneModeNAV = 105
-local iCommandPlaneModeBVR = 106
-local iCommandPlaneModeA2G = 111
 
-dev:listen_command(iCommandPlaneModeNAV)
-dev:listen_command(iCommandPlaneModeBVR)
-dev:listen_command(iCommandPlaneModeA2G)
---dev:listen_command(iCommandPlaneChangeWeapon)
+dev:listen_command(Keys.PlaneModeNAV)
+dev:listen_command(Keys.PlaneModeBVR)
+dev:listen_command(Keys.PlaneModeGround)
+--dev:listen_command(Keys.PlaneChgWeapon)
 
 debug_enable:set(0)
 
@@ -54,23 +53,23 @@ function update()
 end
 
 function SetCommand(command,value)
-	if command == iCommandPlaneModeBVR then
+	if command == Keys.PlaneModeBVR then
         -- BVR = beyond visual range, abused here for debug, for stuff you cannot ordinarily see ;)
         if debug_enable:get()==0 then
             print_message_to_user("debug enable")
             debug_enable:set(1)
         end
     end
-	if command == iCommandPlaneModeNAV then
+	if command == Keys.PlaneModeNAV then
         if debug_enable:get()==1 then
             print_message_to_user("debug disable")
             debug_enable:set(0)
         end
     end
-	if command == iCommandPlaneModeA2G then
+	if command == Keys.PlaneModeGround then
         --print_message_to_user("A2G mode")
     end
---	if command == iCommandPlaneChangeWeapon then
+--	if command == Keys.PlaneChgWeapon then
 --        print_message_to_user("change weapon")
 --    end
 end

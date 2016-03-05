@@ -4,6 +4,11 @@ Keys =
 	PlanePickleOff	= 351,
 	PlaneFireOn		= 84,
 	PlaneFireOff	= 85,
+    PlaneChgWeapon  = 101,
+    PlaneModeNAV    = 105,
+    PlaneModeBVR    = 106,
+    PlaneModeGround = 111,
+
 	
 	Canopy = 71,
 	
