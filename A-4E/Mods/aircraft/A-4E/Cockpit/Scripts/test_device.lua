@@ -47,7 +47,7 @@ function update()
     current_AOA:set((sensor_data.getAngleOfAttack()*360.0/(2.0*math.pi)))
     current_G:set(sensor_data.getVerticalAcceleration())
     current_HDG:set(360.0-(sensor_data.getHeading()*360.0/(2.0*math.pi)))
-    if sensor_data.getRadarAltitude() > 915 then  -- radar altimeter cuts off at 3000'
+    if sensor_data.getRadarAltitude() > 1524 then  -- radar altimeter cuts off at 5000' AGL per APN-141 capabilities
 		current_ALT:set(sensor_data.getBarometricAltitude()*3.28084) -- convert meters to feet
 		current_ALT_SOURCE:set(" ") -- TODO
 	else
