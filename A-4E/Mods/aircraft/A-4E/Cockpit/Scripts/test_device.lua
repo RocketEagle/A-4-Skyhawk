@@ -40,15 +40,18 @@ function update()
 	current_mach:set(sensor_data.getMachNumber())
     current_RPM:set(sensor_data.getEngineLeftRPM())
     --current_pitch:set(sensor_data.getPitch())
-    current_IAS:set(sensor_data.getIndicatedAirSpeed()*3.6)
+
+    --current_IAS:set(sensor_data.getIndicatedAirSpeed()*3.6) -- convert m/s to km/h
+    current_IAS:set(sensor_data.getIndicatedAirSpeed()*1.9438444924574) -- convert to m/s to knots
+
     current_AOA:set((sensor_data.getAngleOfAttack()*360.0/(2.0*math.pi)))
     current_G:set(sensor_data.getVerticalAcceleration())
     current_HDG:set(360.0-(sensor_data.getHeading()*360.0/(2.0*math.pi)))
-    if sensor_data.getRadarAltitude() > 1200 then
-		current_ALT:set(sensor_data.getBarometricAltitude())
+    if sensor_data.getRadarAltitude() > 915 then  -- radar altimeter cuts off at 3000'
+		current_ALT:set(sensor_data.getBarometricAltitude()*3.28084) -- convert meters to feet
 		current_ALT_SOURCE:set(" ") -- TODO
 	else
-		current_ALT:set(sensor_data.getRadarAltitude())
+		current_ALT:set(sensor_data.getRadarAltitude()*3.28084) -- convert meters to feet
 		current_ALT_SOURCE:set("R") -- TODO
 	end
 
