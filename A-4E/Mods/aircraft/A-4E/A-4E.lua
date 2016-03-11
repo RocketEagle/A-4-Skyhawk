@@ -33,7 +33,7 @@ local function coltMK12(tbl)
     end    
     tbl.ejector_pos             = tbl.ejector_pos or {0, 0, 0}
     tbl.ejector_pos_connector    = tbl.ejector_pos_connector     or  "Gun_point"
-    tbl.ejector_dir             = {10, -0, 0} --{-6, -2, 0}
+    tbl.ejector_dir             = {-1, -6, 0} -- left/right; back/front;?/?
     tbl.supply_position          = tbl.supply_position   or {0,  0.3, -0.3}
     tbl.aft_gun_mount             = false
     tbl.effective_fire_distance = 1500
