@@ -112,34 +112,36 @@ function update()
     end
   
     -- make primary nosegear adjustments if needed
-    if GEAR_NOSE_ERR == 0 then
-        if GEAR_TARGET ~= GEAR_NOSE_STATE then
-            if GEAR_NOSE_STATE < GEAR_TARGET then
-                GEAR_NOSE_STATE = GEAR_NOSE_STATE + gear_nose_extend_increment
-            else
+    if GEAR_TARGET ~= GEAR_NOSE_STATE then
+        if GEAR_NOSE_STATE < GEAR_TARGET then
+            GEAR_NOSE_STATE = GEAR_NOSE_STATE + gear_nose_extend_increment
+        else
+            if GEAR_NOSE_ERR == 0 then
                 GEAR_NOSE_STATE = GEAR_NOSE_STATE - gear_nose_retract_increment
             end
         end
     end
 
     -- make primary main gear adjustments if needed
-    if GEAR_MAIN_ERR == 0 then
-        if GEAR_TARGET ~= GEAR_LEFT_STATE or GEAR_TARGET ~= GEAR_RIGHT_STATE then
-            -- left gear moves first, both up and down
-            if GEAR_LEFT_STATE < GEAR_TARGET then
-                -- extending
-                GEAR_LEFT_STATE = GEAR_LEFT_STATE + gear_main_increment
-            else
+    if GEAR_TARGET ~= GEAR_LEFT_STATE or GEAR_TARGET ~= GEAR_RIGHT_STATE then
+        -- left gear moves first, both up and down
+        if GEAR_LEFT_STATE < GEAR_TARGET then
+            -- extending
+            GEAR_LEFT_STATE = GEAR_LEFT_STATE + gear_main_increment
+        else
+            if GEAR_MAIN_ERR == 0 then
                 GEAR_LEFT_STATE = GEAR_LEFT_STATE - gear_main_increment
             end
+        end
 
-            -- right gear lags left gear by LeftSideLead seconds
-            if GEAR_RIGHT_STATE < GEAR_TARGET then
-                if GEAR_LEFT_STATE > LeftSideLead then
-                    GEAR_RIGHT_STATE = GEAR_RIGHT_STATE + gear_main_increment
-                end
-            else
-                if GEAR_LEFT_STATE < (1-LeftSideLead) then
+        -- right gear lags left gear by LeftSideLead seconds
+        if GEAR_RIGHT_STATE < GEAR_TARGET then
+            if GEAR_LEFT_STATE > LeftSideLead then
+                GEAR_RIGHT_STATE = GEAR_RIGHT_STATE + gear_main_increment
+            end
+        else
+            if GEAR_LEFT_STATE < (1-LeftSideLead) then
+                if GEAR_MAIN_ERR == 0 then
                     GEAR_RIGHT_STATE = GEAR_RIGHT_STATE - gear_main_increment
                 end
             end
