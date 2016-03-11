@@ -101,13 +101,23 @@ A_4E =  {
                     7, -- rat
                     13, -- prop slow
                     14, -- prop fast
-                    130 -- Nose Light
+                    130, -- Nose Light
+                    190, -- left nav light
+                    191, -- tail nav light
+                    192, -- right nav light
+                    198, -- top anti collision light
+                    199, -- bottom anti collision light
+                    208, -- landing light
+                    209, -- taxi light
+                    210, -- nacelle spotlight
+                    211, -- left nose light
+                    212, -- right nose light
                     },
-                    
+
     mapclasskey         = "P0091000024",
     attribute              = {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,
                         "Multirole fighters", "Refuelable",},
-    Categories = {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},    
+    Categories = {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
     -------------------------
     M_empty                     = 5242.17, -- kg
     M_nominal                     = 8318, -- kg
