@@ -31,7 +31,7 @@ local GearNoseExtendTimeSec = 6     -- 6 seconds to extend
 
 local GearMainTimeSec = 5           -- 5 seconds to retract and extend main gear
 
-local LeftSideLead = 0.7 / (GearMainTimeSec) -- left side main gear leads right side, both opening and closing, by 0.7 seconds
+local LeftSideLead = 0.4 / (GearMainTimeSec) -- left side main gear leads right side, both opening and closing, by 0.7 seconds
 
 --Creating local variables
 local GEAR_NOSE_STATE = 0 -- 0 = retracted, 1.0 = extended -- "current" nose gear position
