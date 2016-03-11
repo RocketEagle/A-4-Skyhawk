@@ -67,7 +67,7 @@ function SetCommand(command,value)
   
   ias_knots = sensor_data.getIndicatedAirSpeed() * 3.6 * rate_met2knot
   if ias_knots > 280 then 
-    if GEAR_MAIN_STATE > 0.2 then
+    if GEAR_LEFT_STATE > 0.2 or GEAR_RIGHT_STATE > 0.2 then
       GEAR_MAIN_ERR = 1
     end
     if GEAR_NOSE_STATE > 0.2 then
@@ -103,7 +103,7 @@ function update()
 
     ias_knots = sensor_data.getIndicatedAirSpeed() * 3.6 * rate_met2knot
     if ias_knots > 280 then 
-      if GEAR_MAIN_STATE > 0.2 then
+      if GEAR_LEFT_STATE > 0.2 or GEAR_RIGHT_STATE > 0.2 then
         GEAR_MAIN_ERR = 1
       end
       if GEAR_NOSE_STATE > 0.2 then
