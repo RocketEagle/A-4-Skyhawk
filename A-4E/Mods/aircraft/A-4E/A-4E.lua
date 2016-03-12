@@ -57,8 +57,14 @@ A_4E =  {
     Name                 =   'A-4E',
     DisplayName            = _('A-4E'),
     ViewSettings        = ViewSettings,
-	Countries = {"USA","Isreal","Australia"},
-    
+
+    -- enable A-4 for all countries.  It is CHEAP and easy to maintain
+	Countries = {"Abkhazia","Australia","Austria","Belarus","Belgium","Bulgaria","Canada","China","Croatia",
+                 "Czech Republic","Denmark","Egypt","Finland","France","Georgia","Germany","Greece","Hungary",
+                 "India","Insurgents","Iran","Iraq","Israel","Italy","Japan","Kazakhstan","The Netherlands","North Korea",
+                 "Norway","Pakistan","Poland","Romania","Russia","Saudi Arabia","Serbia","Slovakia","South Korea",
+                 "South Ossetia","Spain","Sweden","Switzerland","Syria","Turkey","UK","Ukraine","USA","USAF Aggressors"},
+        
     HumanCockpit         = false,
     HumanCockpitPath    = current_mod_path..'/Cockpit/',
     
