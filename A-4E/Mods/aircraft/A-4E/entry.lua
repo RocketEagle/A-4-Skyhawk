@@ -8,7 +8,7 @@ fileMenuName = _("A-4E"),
 update_id        = "A-4E",
 version		 = "1.5.3 (WIP)",	-- 	 
 state		 = "installed",
-info		 = _("A-4E Skyhawk"),
+info		 = _("A-4E"),
 encyclopedia_path = current_mod_path..'/Encyclopedia',
 binaries   =
 {
