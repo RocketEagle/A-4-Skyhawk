@@ -1,0 +1,121 @@
+
+HoggitDev A-4E Official Dev Plan
+12 March 2016
+
+
+We are going to try to implement an A-4E as documented in NAVAIR
+01-40AVC-1, "NATOPS Flight Manual, Navy Model, A-4E/F Aircraft" last
+changed 15 November 1970.
+
+This document is on our HoggitDev Share google drive, with the name
+A4G_NATOPS_Text_Searchable+BookMarks.pdf in the "Documentation/doc"
+folder.
+
+
+As this is a combined NAVAIR document, the listed AFC (Airframe
+Change) numbers are possible upgrades for both E and F airplanes.
+
+List that we ARE implementing:
+
+* 200 - Radar Altimeter & Bearing Distance Heading Indicator - Inst Panel (30+39)
+* 202 - Air Refueling Probe Light - RH Wedge Console (47)
+* 204 - Canopy Jettison System - RH Side Cockpit
+* 209 - Wing Fuel Dump and Emergency Transfer - Fuel System Mod (5)
+* 217 - Elapsed Time Clock - Windshield
+* 219 - Remote Attitude Indicating System - Inst Panel (19?)
+* 221 - Dual Purpose Red and High Intensity White Cockpit Light - Cockpit
+* 241 - Shrike Missile Capability - Armament Panel (35)
+* 256 - Bullpup Adaptive Control - LH Console (?)
+* 268-I/II/III - Approach Power Compensator - LH Glareshield
+* 272 - Armament Station Selector Switches - Armament Panel (35)
+* 282 - Doppler Navigation System - RH Console (50)
+* 294 - (LAWS) Warning System - LAWS Light - Glareshield
+* 303-1 - Universal Stores Release System - Cockpit (35?)
+* 304 - Windshield Rain Repellent System - LH Console
+* 310 - Canopy Emergency Jettison Handle - RH Side Cockpit
+* 317 - Fuel Transfer Bypass Switch - RH Wedge Console (49A)
+* 318 - Walleye Weapon System - Armament Panel
+* 325 - Upper Avionics Compartment (ECM, etc.) - LH Glareshield
+* 328 - Eight Day Clock - Inst Panel (22)
+* 333-1 - LAWS, Installation - N/A (?)
+* 343-I/II - Communcations Equipment - RH Console (58/59)
+* 344 - Emergency Bomb Release Selector Switch - Armament Panel (35)
+* 345 - Warning Light Press-to-Test Circuit - Inst Panel (34)
+* 353 - Gunsight Mount Rigidity and Light Dimming Circuit - Inst Panel
+* 356 - IFF MODE 4 Failure Light - RH Glareshield
+* 359 - Escapac I Zero-Zero Escape System - Cockpit
+* 376 - Full Shrike System Early A-4E - Armament Panel (35)
+* 382 - Exhaust Smoke Abatement - LH Wedge Console (15)
+* 386 - Shrike Improved Display System (SIDS) (?)
+* 387 - Radar Control Console (6?)
+* 395 - Improved Walleye Display (?)
+* 400 - J52-P-8A Engine Installation - Cockpit Placard
+* 418-II - AN/ALE Chaff Dispenser - LH Glareshield
+* 428 - Instrument Panel Lighting Control - Wiring/Control mod (54)
+* 430 - Cockpit Landing Checklist Panel - LH Inst Panel (below 42)
+* 442 - Wing Lift Spoilers - Throttle Quad. (16A)
+* 451 - Gunsight, Adjustment Knob Assembly - Center Glareshield
+* 451-I - Interchange Angle-of-Attack Indexer and Accelerometer - Inst Panel (18/42)
+* 456 - Angle-of-Attack Indexer - Above Glareshield (18?/42?)
+
+List that we are modeling in the cockpit, but likely non-functional:
+
+* 213 - JATO Provisions - Throttle Quadrant (17)
+- shrike support
+- ground radar support
+
+List of official modifications we are NOT implementing in our specific A-4E:
+
+* 360-1 - Upper Avionics Compartment - LH Glareshield, reason: already have AFC 325
+* 429 - Nosewheel Steering, reason: A-4F only
+* 473 - AN/APN-154(V) Radar Beacon - LH Console, reason: no info
+
+
+List of official modifications we would have no way of noticing:
+
+* 230 - Horizontal Stabilizer Nose Down Incidence - Wiring/System Mod
+* 258 - AJB-3/A Lof Bomb ON/OFF Switch (Gyro Cutout Switch) - Wiring Mod
+* 270A - Fuel Boost Pump Circuit Wiring - Wiring Mod
+* 331 - Improved Air Bleed System for Air Turbine Transfer Pump - N/A
+* 394-I/II/III/IV - Supplement ECM - Wiring/Control Mod.
+* 423 - Disable LAWS Unreliability Tone with APR-27 Installed - N/A
+* 464 - AXC-666 Air Data Computer Wiring - wiring mod
+* 315 - Two Point Oil Quantity Indicating System - Inst Panel
+
+
+Cockpit Decisions to make:
+
+#256 - Bullpup Adaptive Control - LH Console
+
+       if we implement:
+       - panel 7 becomes ARN-77 Control Selector (was panel #6 Radar Control Panel)
+       - panel 51 becomes AFCS Test Switch Panel (was Spare Lamps Container)
+       - panel 52 becomes Compass Control Panel (was AFCS Test Switch Panel)
+       - panel 55 becomes IFF Control Panel (was Compass Control Panel)
+       - panel 56 becomes Radar Control Panel (was IFF Control Panel)
+
+       *NOTE: Panel 6 affected by #387 below too!
+
+#376 - Full Shrike System Early A-4E - Armament Panel
+
+       if we implement:
+       - panel 2 becomes Weapon Control Panel (was blank)
+       - panel 3 becomes blank (was LABS Control Panel)
+
+       *NOTE: are LABS and Shrike mutually exclusive?
+
+#387 - Radar Control Console
+
+       if we implement:
+       - panel 6 becomes Radar Control Console, unless we also
+         have #256 above, in which case Radar Control Console
+         moves to panel 56 position
+
+"Late A-4E"
+
+       if we implement:
+       - button/light 23 becomes oil quantity indicator switch (#315?)
+       - gauge 31 becomes blank (was dead reckoning indicator)
+       - panel 37 becomes Aircraft Weapons Release Systems Panel (otherwise N/A)
+       - panel 50 at top left (ASN-41 Doppler Nav Computer) (otherwise ASN-19)
+       - panel 49/49A late configuration w/ spare lamps
