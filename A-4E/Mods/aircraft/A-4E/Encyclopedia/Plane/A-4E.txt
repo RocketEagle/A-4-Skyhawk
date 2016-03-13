@@ -2,9 +2,9 @@ A-4E Skyhawk
 Plane/A-4E.png
 A-4E
 
-Name: A-4E Skyhawk
+Name: A-4E
 Type: 
-Crew: 
+Crew: 1
 Length: 11.85 m
 Wing span: 9.11 m
 Height: 4.19 m
