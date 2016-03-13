@@ -52,6 +52,7 @@ List that we ARE implementing:
 * 400 - J52-P-8A Engine Installation - Cockpit Placard
 * 418-II - AN/ALE Chaff Dispenser - LH Glareshield
 * 428 - Instrument Panel Lighting Control - Wiring/Control mod (54)
+* 429 - Nosewheel Steering, reason: A-4F only, but built into the SFM
 * 430 - Cockpit Landing Checklist Panel - LH Inst Panel (below 42)
 * 442 - Wing Lift Spoilers - Throttle Quad. (16A)
 * 451 - Gunsight, Adjustment Knob Assembly - Center Glareshield
@@ -67,7 +68,6 @@ List that we are modeling in the cockpit, but likely non-functional:
 List of official modifications we are NOT implementing in our specific A-4E:
 
 * 360-1 - Upper Avionics Compartment - LH Glareshield, reason: already have AFC 325
-* 429 - Nosewheel Steering, reason: A-4F only
 * 473 - AN/APN-154(V) Radar Beacon - LH Console, reason: no info
 
 
@@ -80,7 +80,7 @@ List of official modifications we would have no way of noticing:
 * 394-I/II/III/IV - Supplement ECM - Wiring/Control Mod.
 * 423 - Disable LAWS Unreliability Tone with APR-27 Installed - N/A
 * 464 - AXC-666 Air Data Computer Wiring - wiring mod
-* 315 - Two Point Oil Quantity Indicating System - Inst Panel
+* 315 - Two Point Oil Quantity Indicating System - Inst Panel (?)
 
 
 Cockpit Decisions to make:
@@ -119,3 +119,10 @@ Cockpit Decisions to make:
        - panel 37 becomes Aircraft Weapons Release Systems Panel (otherwise N/A)
        - panel 50 at top left (ASN-41 Doppler Nav Computer) (otherwise ASN-19)
        - panel 49/49A late configuration w/ spare lamps
+
+Buddy Refueling
+
+       if we implement:
+       - need to place the refueling control panel per PDF page 687
+         (FO-3) into maybe position 3?  Without this panel, there's no
+         point in implementing the D-704 buddy refueling pod.
