@@ -23,7 +23,7 @@ Thrust Rating (ISA sea level): 2x2860 kg
 
 
 Armament: 
- - 2 x Matra Magic
+ - 2 x AIM-9Bs
  - 2 x Rocket Pods
  - Practice Bombs
  - BL-755 Cluster Bombs
