@@ -1,4 +1,4 @@
-declare_plugin("A-4E Skyhawk by Hoggit Dev",
+declare_plugin("A-4E by Hoggit Dev",
 {
 installed 	 = true,
 dirName	  	 = current_mod_path,

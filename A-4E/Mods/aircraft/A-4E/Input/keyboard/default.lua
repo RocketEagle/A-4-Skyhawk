@@ -340,7 +340,7 @@ keyCommands = {
     --{combos = {{key = 'F12', reformers = {'RAlt'}}}, down = iCommandAutoLockOnPreviousSurfaceTarget, name = _('Auto lock on previous surface target'), category = _('Simplifications')},
 
     --
-    -- A-4E Skyhawk Specific Controls
+    -- A-4E Specific Controls
     --
 
     {combos = {{key = '=', reformers = {'RShift'}}}, pressed = iCommandAltimeterPressureIncrease,	up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Increase'), category = _('Systems')},
