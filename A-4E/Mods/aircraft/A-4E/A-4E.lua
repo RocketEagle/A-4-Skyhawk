@@ -513,7 +513,7 @@ A_4E =  {
     SFM_Data = {
         aerodynamics = -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
         {
-            Cy0            = 0.4,    -- zero AoA lift coefficient
+            Cy0            = 0.0,    -- zero AoA lift coefficient
             Mzalfa        = 5,    -- coefficients for pitch agility
             Mzalfadt    = 1,    -- coefficients for pitch agility
             kjx         = 2.25,    -- Inertia parametre X - Dimension (clean) airframe drag coefficient at X (Top) Simply the wing area in square meters (as that is a major factor in drag calculations) - smaller = massive inertia
