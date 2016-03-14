@@ -245,7 +245,7 @@ A_4E =  {
         elevation = {-50.0, 90.0} -- pilot view vertical (AI)
     },
     Sensors = {
-        RADAR = "AN/APG-53A", --en vrai : AN APG 53B
+        RADAR = "AN/APG-53A",
         IRST = "OLS-27",
         OPTIC = "Shkval",--necessite un profil 25T.
         RWR = "Abstract RWR"
@@ -253,15 +253,48 @@ A_4E =  {
     Countermeasures = {
         ECM = "AN/ALQ-165"
     },
+
+    InheriteCommonCallnames = true,
+
     HumanRadio = {
-        frequency = 127.5,  -- Radio Freq
+        frequency = 254.0, -- Maykop (Caucasus) or Nellis (NTTR)
         editable = true,
-        minFrequency = 100.000,
-        maxFrequency = 156.000,
+        minFrequency = 225.000,
+        maxFrequency = 399.900,
         modulation = MODULATION_AM
     },
-    --InheriteCommonCallnames = true,
     
+    panelRadio = {
+        [1] = {
+            name = _("AN/ARC-27A"),		   
+            range = {	
+                {min = 225.0, max = 399.9}
+            },
+            channels = {  -- matches L-39C except for channel 8, which was changed to a Georgian airport and #20 which is NTTR only (for now).  This radio goes 1-20 not 0-19.
+                [1] = { name = _("Channel 1"),		default = 264.0, modulation = _("AM"), connect = true}, -- mineralnye-vody (URMM) : 264.0
+                [2] = { name = _("Channel 2"),		default = 265.0, modulation = _("AM")},	-- nalchik (URMN) : 265.0
+                [3] = { name = _("Channel 3"),		default = 256.0, modulation = _("AM")},	-- sochi-adler (URSS) : 256.0
+                [4] = { name = _("Channel 4"),		default = 254.0, modulation = _("AM")},	-- maykop-khanskaya (URKH), nellis (KLSV) : 254.0
+                [5] = { name = _("Channel 5"),		default = 250.0, modulation = _("AM")},	-- anapa (URKA) : 250.0
+                [6] = { name = _("Channel 6"),		default = 270.0, modulation = _("AM")},	-- beslan (URMO) : 270.0
+                [7] = { name = _("Channel 7"),		default = 257.0, modulation = _("AM")},	-- krasnodar-pashkovsky (URKK) : 257.0
+                [8] = { name = _("Channel 8"),		default = 258.0, modulation = _("AM")},	-- sukhumi-babushara (UGSS) : 255.0
+                [9] = { name = _("Channel 9"),		default = 262.0, modulation = _("AM")},	-- kobuleti (UG5X) : 262.0
+                [10] = { name = _("Channel 10"),	default = 259.0, modulation = _("AM")},	-- gudauta (UG23) : 259.0
+                [11] = { name = _("Channel 11"),	default = 268.0, modulation = _("AM")},	-- tbilisi-soganlug (UG24) : 268.0
+                [12] = { name = _("Channel 12"),	default = 269.0, modulation = _("AM")},	-- tbilisi-vaziani (UG27) : 269.0
+                [13] = { name = _("Channel 13"),	default = 260.0, modulation = _("AM")},	-- batumi (UGSB) : 260.0
+                [14] = { name = _("Channel 14"),	default = 263.0, modulation = _("AM")},	-- kutaisi-kopitnari (UGKO) : 263.0
+                [15] = { name = _("Channel 15"),	default = 261.0, modulation = _("AM")},	-- senaki-kolkhi (UGKS) :  261.0
+                [16] = { name = _("Channel 16"),	default = 267.0, modulation = _("AM")},	-- tbilisi-lochini (UGTB) : 267.0
+                [17] = { name = _("Channel 17"),	default = 251.0, modulation = _("AM")},	-- krasnodar-center (URKI), creech (KINS) : 251.0
+                [18] = { name = _("Channel 18"),	default = 253.0, modulation = _("AM")},	-- krymsk (URKW), mccarran (KLAS) : 253.0
+                [19] = { name = _("Channel 19"),	default = 266.0, modulation = _("AM")},	-- mozdok (XRMF) : 266.0
+                [20] = { name = _("Channel 20"),	default = 252.0, modulation = _("AM")}, -- N/A, groom lake/homey (KXTA) : 252.0
+            }
+        },
+    },
+        
     LandRWCategories = 
     {
         [1] = 

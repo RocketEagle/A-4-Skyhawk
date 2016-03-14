@@ -1,7 +1,7 @@
 local parameters = {
-	fighter = false,
+	fighter = true,
 	radar = false,
 	ECM = true,
-	refueling = false
+	refueling = true
 }
 return utils.verifyChunk(utils.loadfileIn('Scripts/UI/RadioCommandDialogPanel/Config/LockOnAirplane.lua', getfenv()))(parameters)
