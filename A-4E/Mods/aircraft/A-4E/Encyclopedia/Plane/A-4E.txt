@@ -3,7 +3,7 @@ Plane/A-4E.png
 A-4E
 
 
-Name: A-4E "Skyhawk"
+Name: A-4E
 Type: Attack
 Crew: 1
 Length: 41'3" (12.57 m)
@@ -33,5 +33,5 @@ Armament:
  - LAU-10 rocket pods
  - AIM-9b Sidewinder
 
-The Douglas A-4 Skyhawk is a single seat carrier-capable attack aircraft developed for the United States Navy and United States Marine Corps. The delta winged, single-engined Skyhawk was designed and produced by Douglas Aircraft Company, and later by McDonnell Douglas. It was originally designated A4D under the U.S. Navy's pre-1962 designation system.  Almost 3000 were built between 1954 and 1979.
+The A-4 is a single seat carrier-capable attack aircraft, developed for the United States Navy and United States Marine Corps by the Douglas Aircraft Company.  It was originally designated A4D under the U.S. Navy's pre-1962 designation system.  Almost 3000 were built between 1954 and 1979.
 
