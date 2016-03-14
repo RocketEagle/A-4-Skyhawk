@@ -1,31 +1,37 @@
-A-4E Skyhawk
+A-4E
 Plane/A-4E.png
 A-4E
 
-Name: A-4E
-Type: 
+
+Name: A-4E "Skyhawk"
+Type: Attack
 Crew: 1
-Length: 11.85 m
-Wing span: 9.11 m
-Height: 4.19 m
-Wing area: 17.5 m2
-Weight Empty: 3340 Kg
-Maximum Weight for takeoff: 5785 kg
-Maximum Weight for normal landing: 5000 Kg
-Maximum internal fuel: 1549 kg
+Length: 41'3" (12.57 m)
+Wing span: 27'6" (8.38 m)
+Height: 15' (4.57 m)
+Wing area: 259ft2 (24.15 m2)
+Weight Empty: 10,450 lb (4750 kg)
+Maximum Weight for takeoff: 24,500 lb (11,136 kg)
+Maximum Weight for normal landing: 14,500 lb (6577 kg)
+Maximum internal fuel: 5372 lb (2437 kg)
 Maximum Mach at height: 0.95
 Maximum Mach at S/L: 0.85
-Service ceiling: 12 800 m
-Maximum range: 1230 km
-G limit: 9.0 g
-Normal G: +7.5/-3.5 g
-Thrust Rating (ISA sea level): 2x2860 kg
+Service ceiling: 42,250' (12,875 m)
+Maximum range: 1700 nmi (3220 km)
+G limit: 8.0 g
+Normal G: +7.5/-3.0 g
+Thrust Rating (ISA sea level): 9300 lbf (4218 kgf)
 
 
 Armament: 
- - 2 x AIM-9Bs
- - 2 x Rocket Pods
- - Practice Bombs
- - BL-755 Cluster Bombs
- - 150 x 30 mm Cannon Pod
+ - 200x 20mm Mk12 Cannon
+ - Mk-80 series bombs
+ - CBU-1/A,CBU-2/A cluster bombs
+ - AGM-45 Shrike
+ - AGM-12b Bullpup
+ - AGM-62 Walleye
+ - LAU-10 rocket pods
+ - AIM-9b Sidewinder
+
+The Douglas A-4 Skyhawk is a single seat carrier-capable attack aircraft developed for the United States Navy and United States Marine Corps. The delta winged, single-engined Skyhawk was designed and produced by Douglas Aircraft Company, and later by McDonnell Douglas. It was originally designated A4D under the U.S. Navy's pre-1962 designation system.  Almost 3000 were built between 1954 and 1979.
 
