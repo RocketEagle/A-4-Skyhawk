@@ -13,7 +13,8 @@ local AirbrakeOff = 148
 
 --Creating local variables
 local ABRAKE_COMMAND	=	0				
-local ABRAKE_STATE	=	0		
+local ABRAKE_STATE	=	0
+local ABRAKE_TARGET = 0
 
 
 dev:listen_command(Airbrake)
@@ -24,11 +25,7 @@ dev:listen_command(AirbrakeOff)
 function SetCommand(command,value)			
 	
 	if (command == Airbrake) then
-		if (ABRAKE_COMMAND == 1) then
-			ABRAKE_COMMAND = 0
-		else
-			ABRAKE_COMMAND = 1
-		end
+        ABRAKE_COMMAND = 1 - ABRAKE_COMMAND
 	end
 	
 	if (command == AirbrakeOn) then
@@ -38,19 +35,56 @@ function SetCommand(command,value)
 	if (command == AirbrakeOff) then
 		ABRAKE_COMMAND = 0
 	end
-	
-	
 end
+
+local speedbrake_max_effective_knots = 440
+local speedbrake_blowback_knots = 490
+local a4_max_speed_knots = 540 -- approx, only used to calc linear speedbrake closing, and irrelevant past blowback speed anyway
 
 function update()		
 	
 	if (ABRAKE_COMMAND == 0 and ABRAKE_STATE > 0) then
-		-- lower airbrake in increments of 0.02
-		ABRAKE_STATE = ABRAKE_STATE - 0.01
+		ABRAKE_STATE = ABRAKE_STATE - 0.01 -- lower airbrake in increments of 0.01 (50x per second)
+        if ABRAKE_STATE < 0 then
+            ABRAKE_STATE = 0
+        end
 	else
-		if (ABRAKE_COMMAND == 1 and ABRAKE_STATE < 1) then
-			-- raise airbrake in increment of 0.02
-			ABRAKE_STATE = ABRAKE_STATE + 0.01
+		if (ABRAKE_COMMAND == 1) then
+            local knots = sensor_data.getIndicatedAirSpeed()*1.9438444924574
+            if knots > speedbrake_max_effective_knots then
+                if knots > speedbrake_blowback_knots then
+                    -- blowback pressure relief valve opens
+                    ABRAKE_TARGET = 0
+                    -- not sure whether blowback really means speedbrakes are closed fully, since
+                    -- other places in NATOPS say "speedbrakes are partially effective up to maximum speed capabilities of the aircraft"
+                    -- and "A blowback feature allows the speedbrakes to begin closing when the hydraulic pressure exceeds the pressure
+                    -- at which the blowback relief valve opens (3650 psi), thus preventing damage to the speedbrake system. The speedbrakes
+                    -- begin to blow back at approximately 490 KIAS"
+                else
+                    -- partially open and partially effective up to max speed of aircraft
+                    -- "The speedbrakes will not open fully above 440 KIAS"
+                    -- "Maximum speed for fully effective opening of speedbrakes is 440 KIAS. However, speedbrakes are
+                    -- partially effective up to maximum speed capabilities of the aircraft."
+                    local reduction = (knots - speedbrake_max_effective_knots) / (a4_max_speed_knots - speedbrake_max_effective_knots)  -- simplistically assume linear reduction from 440 to 540kts
+                    if reduction > 1 then
+                        reduction = 1
+                    end
+                    ABRAKE_TARGET = 1 - reduction
+                end
+            else
+                ABRAKE_TARGET = 1
+            end
+            if (ABRAKE_STATE < ABRAKE_TARGET) then
+                ABRAKE_STATE = ABRAKE_STATE + 0.01 -- raise airbrake in increment of 0.01 (50x per second)
+                if ABRAKE_STATE > ABRAKE_TARGET then
+                    ABRAKE_STATE = ABRAKE_TARGET
+                end
+            elseif (ABRAKE_STATE > ABRAKE_TARGET) then
+                ABRAKE_STATE = ABRAKE_STATE - 0.01 -- lower airbrake in increments of 0.01 (50x per second)
+                if ABRAKE_STATE < ABRAKE_TARGET then
+                    ABRAKE_STATE = ABRAKE_TARGET
+                end
+            end
 		end
 	end
 	
