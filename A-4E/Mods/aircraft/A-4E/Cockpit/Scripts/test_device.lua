@@ -77,6 +77,7 @@ function SetCommand(command,value)
     end
 	if command == Keys.PlaneModeGround then
         --print_message_to_user("A2G mode")
+        --dispatch_action(nil,Keys.PlaneFireOn)
         --local weap=GetDevice(devices.WEAPON_SYSTEM)
         --weap:launch_station(0)
         --weap:launch_station(1)
