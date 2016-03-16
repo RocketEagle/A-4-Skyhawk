@@ -311,7 +311,7 @@ keyCommands = {
     {down = iCommandPlaneModeNAV, name = _('(1) Navigation Modes'), category = _('Modes')},
 
     -- Weapons                                                                        
-    {down = iCommandPlaneFire, up = iCommandPlaneFireOff, name = _('Weapon Fire'), category = _('Weapons')},
+    {combos = {{key = 'JOY_BTN1'}}, down = iCommandPlaneFire, up = iCommandPlaneFireOff, name = _('Weapon Fire'), category = _('Weapons')},
     {down = iCommandPlaneChangeWeapon, name = _('Weapon Change'), category = _('Weapons')},
     {down = iCommandPlaneModeCannon, name = _('Cannon'), category = _('Weapons')},
     --{down = iCommandPlaneLaunchPermissionOverride, name = _('Launch Permission Override'), category = _('Weapons')},
