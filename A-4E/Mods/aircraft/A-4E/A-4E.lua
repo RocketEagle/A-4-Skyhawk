@@ -697,30 +697,30 @@ A_4E =  {
         
     --damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
     Damage = {
-                [0] = {critical_damage = 5, args = {82}},
-                [3] = {critical_damage = 10, args = {65}},
-                [8] = {critical_damage = 10},
-                [11] = {critical_damage = 3},
-                [12] = {critical_damage = 3},
-                [15] = {critical_damage = 10},
-                [16] = {critical_damage = 10},
-                [17] = {critical_damage = 3},
-                [18] = {critical_damage = 3},
-                [25] = {critical_damage = 5, args = {53}},
-                [26] = {critical_damage = 5, args = {54}},
-                [35] = {critical_damage = 10, args = {67}, deps_cells = {25, 37}},
-                [36] = {critical_damage = 10, args = {68}, deps_cells = {26, 38}},
-                [37] = {critical_damage = 4, args = {55}},
-                [38] = {critical_damage = 4, args = {56}},
-                [43] = {critical_damage = 4, args = {61}, deps_cells = {53}},
-                [44] = {critical_damage = 4, args = {62}, deps_cells = {54}},
-                [47] = {critical_damage = 5, args = {63}, deps_cells = {51}},
-                [48] = {critical_damage = 5, args = {64}, deps_cells = {52}},
-                [51] = {critical_damage = 2, args = {59}},
-                [52] = {critical_damage = 2, args = {60}},
-                [53] = {critical_damage = 2, args = {57}},
-                [54] = {critical_damage = 2, args = {58}},
-                [55] = {critical_damage = 5, args = {81}},
+                [0] = {critical_damage = 5, args = {82}}, -- 0 - nose center
+                [3] = {critical_damage = 10, args = {65}}, -- 3 - cockpit
+                [8] = {critical_damage = 10}, -- 8 - front gear
+                [11] = {critical_damage = 3}, -- 11 - engine in left 
+                [12] = {critical_damage = 3}, -- 12 - engine in right 
+                [15] = {critical_damage = 10}, -- 15 - gear left 
+                [16] = {critical_damage = 10}, -- 16 - gear right 
+                [17] = {critical_damage = 3}, -- 17 - motogondola left (left engine out, left ewu) 
+                [18] = {critical_damage = 3}, -- 18 - motogondola right (right engine out, right ewu) 
+                [25] = {critical_damage = 5, args = {53}}, -- 25 - eleron left 
+                [26] = {critical_damage = 5, args = {54}}, -- 26 - eleron right 
+                [35] = {critical_damage = 10, args = {67}, deps_cells = {25, 37}}, -- 35 - wing in left 
+                [36] = {critical_damage = 10, args = {68}, deps_cells = {26, 38}}, -- 36 - wing in right 
+                [37] = {critical_damage = 4, args = {55}}, -- 37 - flap in left 
+                [38] = {critical_damage = 4, args = {56}}, -- 38 - flap in right 
+                [43] = {critical_damage = 4, args = {61}, deps_cells = {53}}, -- 43 - fin bottom left
+                [44] = {critical_damage = 4, args = {62}, deps_cells = {54}}, -- 44 - fin bottom right
+                [47] = {critical_damage = 5, args = {63}, deps_cells = {51}}, -- 47 - stabilizer in left
+                [48] = {critical_damage = 5, args = {64}, deps_cells = {52}}, -- 48 - stabilizer in right
+                [51] = {critical_damage = 2, args = {59}}, -- 51 - elevator in left
+                [52] = {critical_damage = 2, args = {60}}, -- 52 - elevator in right
+                [53] = {critical_damage = 2, args = {57}}, -- 53 - rudder left
+                [54] = {critical_damage = 2, args = {58}}, -- 54 - rudder right
+                [55] = {critical_damage = 5, args = {81}}, -- 55 - tail
                 [83]    = {critical_damage = 3, args = {134}}, -- nose wheel                                  
                 [84]    = {critical_damage = 3, args = {136}}, -- left wheel                                  
                 [85]    = {critical_damage = 3, args = {135}}, -- right wheel
