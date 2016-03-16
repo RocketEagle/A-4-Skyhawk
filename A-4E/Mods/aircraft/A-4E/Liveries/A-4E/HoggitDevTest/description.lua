@@ -1,7 +1,10 @@
 -- rename it to description.lua
 livery = 
 {
-    {"fuselage", 0, "test.dds", false};
+    --{"fuselage", 0, "test.dds", false};
+    {"Bottom", 0, "uvmapsfuselage_bottom_v430", true};
+    {"Top", 0, "top_grid_test", true};
+
 }
 ----== below part is not required for cockpit livery ==----
 --[[ name your own skin in default language (en)
