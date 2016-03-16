@@ -89,8 +89,8 @@ function update()
 	end
 	
 	
-	set_aircraft_draw_argument_value(182,ABRAKE_STATE)
-	set_aircraft_draw_argument_value(186,ABRAKE_STATE)
+	--set_aircraft_draw_argument_value(182,ABRAKE_STATE)
+	set_aircraft_draw_argument_value(21,ABRAKE_STATE)
 	
 end
 
