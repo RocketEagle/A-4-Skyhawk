@@ -26,6 +26,7 @@ dev:listen_command(Keys.PlaneModeNAV)
 dev:listen_command(Keys.PlaneModeBVR)
 dev:listen_command(Keys.PlaneModeGround)
 dev:listen_command(Keys.PlaneChgWeapon)
+dev:listen_command(device_commands.Button_1)
 
 debug_enable:set(0)
 
@@ -98,6 +99,9 @@ function SetCommand(command,value)
         --end
     end
 	if command == Keys.PlaneChgWeapon then
+    end
+    if command == device_commands.Button_1 then
+        print_message_to_user("Gun master clicked")
     end
 end
 

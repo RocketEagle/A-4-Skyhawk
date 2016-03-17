@@ -48,5 +48,6 @@ Keys =
 start_command   = 3000
 device_commands =
 {
-    Button_Test = start_command + 0;
+    Button_Test = start_command + 0,
+    Button_1 = start_command + 1,
 }

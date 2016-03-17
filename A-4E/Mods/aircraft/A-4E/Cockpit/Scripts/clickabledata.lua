@@ -265,6 +265,7 @@ elements = {}
 
 -- elements["POINTER"] = default_2_position_tumb(LOCALIZE("Test Command"),devices.TEST, device_commands.Button_1,444) -- 44 arg number
 elements["POINTER"] = default_2_position_tumb("Test Command",devices.TEST, device_commands.Button_1,444) -- 44 arg number
+elements["PNT_445"] = default_2_position_tumb("Gun master",devices.TEST, device_commands.Button_1,445) -- 44 arg number
 
 for i,o in pairs(elements) do
 	if  o.class[1] == class_type.TUMB or 
