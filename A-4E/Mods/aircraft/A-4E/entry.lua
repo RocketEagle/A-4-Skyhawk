@@ -48,8 +48,9 @@ InputProfiles =
 
 mount_vfs_liveries_path (current_mod_path.."/Liveries")
 mount_vfs_texture_path  (current_mod_path.."/Textures")
-mount_vfs_texture_path  (current_mod_path.."/Textures/A-4E")
-mount_vfs_texture_path  (current_mod_path.."/Textures/A-4E-2")
+mount_vfs_texture_path  (current_mod_path.."/Textures/a4e")         -- base/default textures (.zip)
+mount_vfs_texture_path  (current_mod_path.."/Textures/a4e_grid")    -- grid/debug textures (.zip)
+mount_vfs_texture_path  (current_mod_path.."/Textures/a4e_usn")     -- USN liveries (.zip)
 mount_vfs_texture_path  (current_mod_path.."/Cockpit/Textures")
 mount_vfs_model_path	(current_mod_path.."/Cockpit/Shapes")
 

@@ -1,7 +1,7 @@
 -- rename it to description.lua
 livery = 
 {
-    {"fuselage", 0, "va45_blackbirds.dds", true};
+    {"Top", 0, "va45_blackbirds_top.dds", true};
 }
 ----== below part is not required for cockpit livery ==----
 --[[ name your own skin in default language (en)

@@ -1,7 +1,7 @@
 -- rename it to description.lua
 livery = 
 {
-    {"fuselage", 0, "vma211_avengers.dds", true};
+    {"Top", 0, "vma211_avengers_top.dds", true};
 }
 ----== below part is not required for cockpit livery ==----
 --[[ name your own skin in default language (en)

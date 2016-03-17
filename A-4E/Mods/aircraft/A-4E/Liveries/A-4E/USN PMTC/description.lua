@@ -1,7 +1,7 @@
 -- rename it to description.lua
 livery = 
 {
-    {"fuselage", 0, "pmtc.dds", true};
+    {"Top", 0, "pmtc_top.dds", true};
 }
 ----== below part is not required for cockpit livery ==----
 --[[ name your own skin in default language (en)
